@@ -1,85 +1,3 @@
-# Emerging Threats 
-
-#
-
-# This distribution may contain rules under two different licenses. 
-
-#
-
-#  Rules with sids 1 through 3464, and 100000000 through 100000908 are under the GPLv2.
-
-#  A copy of that license is available at http://www.gnu.org/licenses/gpl-2.0.html
-
-#
-
-#  Rules with sids 2000000 through 2799999 are from Emerging Threats and are covered under the BSD License 
-
-#  as follows:
-
-#
-
-#*************************************************************
-
-#  Copyright (c) 2003-2019, Emerging Threats
-
-#  All rights reserved.
-
-#  
-
-#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
-
-#  following conditions are met:
-
-#  
-
-#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
-
-#    disclaimer.
-
-#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the 
-
-#    following disclaimer in the documentation and/or other materials provided with the distribution.
-
-#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived 
-
-#    from this software without specific prior written permission.
-
-#  
-
-#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-
-#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-
-#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-
-#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-
-#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-
-#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
-
-#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-
-#
-
-#*************************************************************
-
-#
-
-#
-
-#
-
-#
-
-
-
-# This Ruleset is EmergingThreats Open optimized for suricata-4.0-enhanced.
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Address Mask Reply undefined code"; icode:>0; itype:18; classtype:misc-activity; sid:2100387; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100387
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Address Mask Reply undefined code"; icode:>0; itype:18; classtype:misc-activity; sid:2100387; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -117,10 +35,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Address Mask Request undefined code"; icode:>0; itype:17; classtype:misc-activity; sid:2100389; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100389
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Address Mask Request undefined code"; icode:>0; itype:17; classtype:misc-activity; sid:2100389; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -160,10 +74,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Alternate Host Address undefined code"; icode:>0; itype:6; classtype:misc-activity; sid:2100391; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100391
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Alternate Host Address undefined code"; icode:>0; itype:6; classtype:misc-activity; sid:2100391; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -201,10 +111,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Datagram Conversion Error undefined code"; icode:>0; itype:31; classtype:misc-activity; sid:2100393; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100393
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Datagram Conversion Error undefined code"; icode:>0; itype:31; classtype:misc-activity; sid:2100393; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -244,10 +150,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Datagram Conversion Error"; icode:0; itype:31; classtype:misc-activity; sid:2100392; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100392
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Datagram Conversion Error"; icode:0; itype:31; classtype:misc-activity; sid:2100392; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -285,10 +187,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Destination Unreachable undefined code"; icode:>15; itype:3; classtype:misc-activity; sid:2100407; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100407
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Destination Unreachable undefined code"; icode:>15; itype:3; classtype:misc-activity; sid:2100407; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -328,10 +226,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Echo Reply undefined code"; icode:>0; itype:0; classtype:misc-activity; sid:2100409; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100409
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Echo Reply undefined code"; icode:>0; itype:0; classtype:misc-activity; sid:2100409; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -369,10 +263,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP IPV6 I-Am-Here undefined code"; icode:>0; itype:34; classtype:misc-activity; sid:2100412; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100412
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP IPV6 I-Am-Here undefined code"; icode:>0; itype:34; classtype:misc-activity; sid:2100412; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -412,10 +302,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP IPV6 Where-Are-You undefined code"; icode:>0; itype:33; classtype:misc-activity; sid:2100414; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100414
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP IPV6 Where-Are-You undefined code"; icode:>0; itype:33; classtype:misc-activity; sid:2100414; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -453,10 +339,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Information Request undefined code"; icode:>0; itype:15; classtype:misc-activity; sid:2100418; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100418
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Information Request undefined code"; icode:>0; itype:15; classtype:misc-activity; sid:2100418; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -496,10 +378,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP L3retriever Ping"; icode:0; itype:8; content:"ABCDEFGHIJKLMNOPQRSTUVWABCDEFGHI"; depth:32; reference:arachnids,311; classtype:attempted-recon; sid:2100466; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100466
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP L3retriever Ping"; icode:0; itype:8; content:"ABCDEFGHIJKLMNOPQRSTUVWABCDEFGHI"; depth:32; reference:arachnids,311; classtype:attempted-recon; sid:2100466; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -537,10 +415,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Large ICMP Packet"; dsize:>800; reference:arachnids,246; classtype:bad-unknown; sid:2100499; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100499
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Large ICMP Packet"; dsize:>800; reference:arachnids,246; classtype:bad-unknown; sid:2100499; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -580,10 +454,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Mobile Host Redirect undefined code"; icode:>0; itype:32; classtype:misc-activity; sid:2100420; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100420
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Mobile Host Redirect undefined code"; icode:>0; itype:32; classtype:misc-activity; sid:2100420; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -621,10 +491,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Mobile Registration Reply undefined code"; icode:>0; itype:36; classtype:misc-activity; sid:2100422; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100422
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Mobile Registration Reply undefined code"; icode:>0; itype:36; classtype:misc-activity; sid:2100422; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -664,10 +530,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Mobile Registration Request undefined code"; icode:>0; itype:35; classtype:misc-activity; sid:2100424; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100424
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Mobile Registration Request undefined code"; icode:>0; itype:35; classtype:misc-activity; sid:2100424; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -705,10 +567,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP PING undefined code"; icode:>0; itype:8; classtype:misc-activity; sid:2100365; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100365
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP PING undefined code"; icode:>0; itype:8; classtype:misc-activity; sid:2100365; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -748,10 +606,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem Bad Length"; icode:2; itype:12; classtype:misc-activity; sid:2100425; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100425
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem Bad Length"; icode:2; itype:12; classtype:misc-activity; sid:2100425; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -789,10 +643,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem Missing a Required Option"; icode:1; itype:12; classtype:misc-activity; sid:2100426; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100426
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem Missing a Required Option"; icode:1; itype:12; classtype:misc-activity; sid:2100426; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -832,10 +682,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem Unspecified Error"; icode:0; itype:12; classtype:misc-activity; sid:2100427; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100427
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem Unspecified Error"; icode:0; itype:12; classtype:misc-activity; sid:2100427; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -873,10 +719,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem undefined Code"; icode:>2; itype:12; classtype:misc-activity; sid:2100428; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100428
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Parameter Problem undefined Code"; icode:>2; itype:12; classtype:misc-activity; sid:2100428; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -916,10 +758,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Reserved"; icode:0; itype:40; classtype:misc-activity; sid:2100429; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100429
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Reserved"; icode:0; itype:40; classtype:misc-activity; sid:2100429; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -957,10 +795,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Unknown Security Parameters Index"; icode:1; itype:40; classtype:misc-activity; sid:2100430; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100430
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Unknown Security Parameters Index"; icode:1; itype:40; classtype:misc-activity; sid:2100430; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1000,10 +834,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Valid Security Parameters, But Authentication Failed"; icode:2; itype:40; classtype:misc-activity; sid:2100431; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100431
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Valid Security Parameters, But Authentication Failed"; icode:2; itype:40; classtype:misc-activity; sid:2100431; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1041,10 +871,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Valid Security Parameters, But Decryption Failed"; icode:3; itype:40; classtype:misc-activity; sid:2100432; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100432
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris Valid Security Parameters, But Decryption Failed"; icode:3; itype:40; classtype:misc-activity; sid:2100432; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1084,10 +910,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris undefined code!"; icode:>3; itype:40; classtype:misc-activity; sid:2100433; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100433
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Photuris undefined code!"; icode:>3; itype:40; classtype:misc-activity; sid:2100433; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1125,10 +947,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Redirect undefined code"; icode:>3; itype:5; classtype:misc-activity; sid:2100438; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100438
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Redirect undefined code"; icode:>3; itype:5; classtype:misc-activity; sid:2100438; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1168,10 +986,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Reserved for Security Type 19 undefined code"; icode:>0; itype:19; classtype:misc-activity; sid:2100440; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100440
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Reserved for Security Type 19 undefined code"; icode:>0; itype:19; classtype:misc-activity; sid:2100440; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1209,10 +1023,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Reserved for Security Type 19"; icode:0; itype:19; classtype:misc-activity; sid:2100439; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100439
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Reserved for Security Type 19"; icode:0; itype:19; classtype:misc-activity; sid:2100439; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1252,10 +1062,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP SKIP undefined code"; icode:>0; itype:39; classtype:misc-activity; sid:2100446; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100446
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP SKIP undefined code"; icode:>0; itype:39; classtype:misc-activity; sid:2100446; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1293,10 +1099,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Source Quench undefined code"; icode:>0; itype:4; classtype:misc-activity; sid:2100448; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100448
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Source Quench undefined code"; icode:>0; itype:4; classtype:misc-activity; sid:2100448; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1336,10 +1138,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Timestamp Reply undefined code"; icode:>0; itype:14; classtype:misc-activity; sid:2100452; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100452
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Timestamp Reply undefined code"; icode:>0; itype:14; classtype:misc-activity; sid:2100452; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1377,10 +1175,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Timestamp Request undefined code"; icode:>0; itype:13; classtype:misc-activity; sid:2100454; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100454
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Timestamp Request undefined code"; icode:>0; itype:13; classtype:misc-activity; sid:2100454; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1420,10 +1214,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Traceroute undefined code"; icode:>0; itype:30; classtype:misc-activity; sid:2100457; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100457
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP Traceroute undefined code"; icode:>0; itype:30; classtype:misc-activity; sid:2100457; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1461,10 +1251,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP unassigned type 1 undefined code"; itype:1; classtype:misc-activity; sid:2100459; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100459
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP unassigned type 1 undefined code"; itype:1; classtype:misc-activity; sid:2100459; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1504,10 +1290,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP unassigned type 2 undefined code"; itype:2; classtype:misc-activity; sid:2100461; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100461
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP unassigned type 2 undefined code"; itype:2; classtype:misc-activity; sid:2100461; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1545,10 +1327,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP unassigned type 7 undefined code"; itype:7; classtype:misc-activity; sid:2100463; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100463
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP unassigned type 7 undefined code"; itype:7; classtype:misc-activity; sid:2100463; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1588,10 +1366,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $HOME_NET any -> $EXTERNAL_NET any (msg:"GPL ICMP Information Reply undefined code"; icode:>0; itype:16; classtype:misc-activity; sid:2100416; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100416
 `#alert icmp $HOME_NET any -> $EXTERNAL_NET any (msg:"GPL ICMP Information Reply undefined code"; icode:>0; itype:16; classtype:misc-activity; sid:2100416; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1629,10 +1403,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert icmp $HOME_NET any -> $EXTERNAL_NET any (msg:"GPL ICMP Time-To-Live Exceeded in Transit undefined code"; icode:>1; itype:11; classtype:misc-activity; sid:2100450; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100450
 `#alert icmp $HOME_NET any -> $EXTERNAL_NET any (msg:"GPL ICMP Time-To-Live Exceeded in Transit undefined code"; icode:>1; itype:11; classtype:misc-activity; sid:2100450; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1672,10 +1442,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP undefined code"; icode:>18; classtype:misc-activity; sid:2100197; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100197
 `#alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP undefined code"; icode:>18; classtype:misc-activity; sid:2100197; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1713,6 +1479,4 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
 

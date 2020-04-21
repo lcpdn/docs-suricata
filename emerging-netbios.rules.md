@@ -1,85 +1,3 @@
-# Emerging Threats 
-
-#
-
-# This distribution may contain rules under two different licenses. 
-
-#
-
-#  Rules with sids 1 through 3464, and 100000000 through 100000908 are under the GPLv2.
-
-#  A copy of that license is available at http://www.gnu.org/licenses/gpl-2.0.html
-
-#
-
-#  Rules with sids 2000000 through 2799999 are from Emerging Threats and are covered under the BSD License 
-
-#  as follows:
-
-#
-
-#*************************************************************
-
-#  Copyright (c) 2003-2019, Emerging Threats
-
-#  All rights reserved.
-
-#  
-
-#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
-
-#  following conditions are met:
-
-#  
-
-#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
-
-#    disclaimer.
-
-#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the 
-
-#    following disclaimer in the documentation and/or other materials provided with the distribution.
-
-#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived 
-
-#    from this software without specific prior written permission.
-
-#  
-
-#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-
-#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-
-#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-
-#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-
-#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-
-#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
-
-#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-
-#
-
-#*************************************************************
-
-#
-
-#
-
-#
-
-#
-
-
-
-# This Ruleset is EmergingThreats Open optimized for suricata-4.0-enhanced.
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS Remote SMB2.0 DoS Exploit"; flow:to_server,established; content:"|ff|SMB|72 00 00 00 00 18 53 c8|"; offset:4; content:!"|00 00|"; within:2; reference:url,securityreason.com/exploitalert/7138; reference:url,doc.emergingthreats.net/2009886; classtype:attempted-dos; sid:2009886; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2009886
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS Remote SMB2.0 DoS Exploit"; flow:to_server,established; content:"|ff|SMB|72 00 00 00 00 18 53 c8|"; offset:4; content:!"|00 00|"; within:2; reference:url,securityreason.com/exploitalert/7138; reference:url,doc.emergingthreats.net/2009886; classtype:attempted-dos; sid:2009886; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -117,10 +35,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS MS04011 Lsasrv.dll RPC exploit (Win2k)"; flow: to_server,established; content:"|00 00 00 00 9A A8 40 00 01 00 00 00 00 00 00 00|"; content:"|01 0000 00 00 00 00 00 9A A8 40 00 01 00 00 00|"; reference:url,doc.emergingthreats.net/bin/view/Main/2000046; reference:cve,2003-0533; classtype:misc-activity; sid:2000046; rev:9; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2000046
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS MS04011 Lsasrv.dll RPC exploit (Win2k)"; flow: to_server,established; content:"|00 00 00 00 9A A8 40 00 01 00 00 00 00 00 00 00|"; content:"|01 0000 00 00 00 00 00 9A A8 40 00 01 00 00 00|"; reference:url,doc.emergingthreats.net/bin/view/Main/2000046; reference:cve,2003-0533; classtype:misc-activity; sid:2000046; rev:9; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -160,10 +74,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS MS04011 Lsasrv.dll RPC exploit (WinXP)"; flow: to_server,established; content:"|95 14 40 00 03 00 00 00 7C 70 40 00 01|"; content:"|78 85 13 00 AB5B A6 E9 31 31|"; reference:url,doc.emergingthreats.net/bin/view/Main/2000033; reference:cve,2003-0533; classtype:misc-activity; sid:2000033; rev:9; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2000033
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS MS04011 Lsasrv.dll RPC exploit (WinXP)"; flow: to_server,established; content:"|95 14 40 00 03 00 00 00 7C 70 40 00 01|"; content:"|78 85 13 00 AB5B A6 E9 31 31|"; reference:url,doc.emergingthreats.net/bin/view/Main/2000033; reference:cve,2003-0533; classtype:misc-activity; sid:2000033; rev:9; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -201,10 +111,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"ET NETBIOS ms05-011 exploit"; flow:from_server,established; content:"|00|"; depth:1; content:"|FF|SMB|32|"; depth:9; offset:4; content: "|ff ff ff ff 00 00 00 00 ff|"; offset: 132; depth: 141; reference:bugtraq,12484; reference:url,www.frsirt.com/exploits/20050623.mssmb_poc.c.php; reference:url,doc.emergingthreats.net/bin/view/Main/2002064; classtype:attempted-admin; sid:2002064; rev:7; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2002064
 `#alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"ET NETBIOS ms05-011 exploit"; flow:from_server,established; content:"|00|"; depth:1; content:"|FF|SMB|32|"; depth:9; offset:4; content: "|ff ff ff ff 00 00 00 00 ff|"; offset: 132; depth: 141; reference:bugtraq,12484; reference:url,www.frsirt.com/exploits/20050623.mssmb_poc.c.php; reference:url,doc.emergingthreats.net/bin/view/Main/2002064; classtype:attempted-admin; sid:2002064; rev:7; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -244,10 +150,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS Microsoft Windows 2000 Plug and Play Vulnerability"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"|2600|"; depth:2; offset:65; content:"|67157a76|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-039.mspx; reference:url,isc.sans.org/diary.php?date=2005-08-14; reference:url,doc.emergingthreats.net/bin/view/Main/2002186; classtype:attempted-admin; sid:2002186; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2002186
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS Microsoft Windows 2000 Plug and Play Vulnerability"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"|2600|"; depth:2; offset:65; content:"|67157a76|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-039.mspx; reference:url,isc.sans.org/diary.php?date=2005-08-14; reference:url,doc.emergingthreats.net/bin/view/Main/2002186; classtype:attempted-admin; sid:2002186; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -285,10 +187,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS DCERPC PnP HOD bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:4; content:"|0B|"; within:1; distance:1; content:"|40 4E 9F 8D 3D A0 CE 11 8F 69 08 00 3E 30 05 1B|"; flowbits:set,netbios.pnp.bind.attempt; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002199; classtype:protocol-command-decode; sid:2002199; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2002199
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS DCERPC PnP HOD bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:4; content:"|0B|"; within:1; distance:1; content:"|40 4E 9F 8D 3D A0 CE 11 8F 69 08 00 3E 30 05 1B|"; flowbits:set,netbios.pnp.bind.attempt; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002199; classtype:protocol-command-decode; sid:2002199; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -328,10 +226,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS DCERPC PnP bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:2; content:"|0B|"; within:1; distance:1; content:"|40 4E 9F 8D 3D A0 CE 11 8F 69 08 00 3E 30 05 1B|"; flowbits:set,netbios.pnp.bind.attempt; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002200; classtype:protocol-command-decode; sid:2002200; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2002200
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS DCERPC PnP bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:2; content:"|0B|"; within:1; distance:1; content:"|40 4E 9F 8D 3D A0 CE 11 8F 69 08 00 3E 30 05 1B|"; flowbits:set,netbios.pnp.bind.attempt; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002200; classtype:protocol-command-decode; sid:2002200; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -369,10 +263,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS DCERPC PnP QueryResConfList exploit attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|36 00|"; within:2; distance:26; pcre:"/(\x00\\\x00.*?){2}\x00{2}\xFF{2}.{128,}[\x04-\xFF][\x00-\xFF]{3}\x00{4}$/Rs"; flowbits:isset,netbios.pnp.bind.attempt; reference:cve,CAN-2005-1983; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-039.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2002201; classtype:attempted-admin; sid:2002201; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2002201
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB-DS DCERPC PnP QueryResConfList exploit attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|36 00|"; within:2; distance:26; pcre:"/(\x00\\\x00.*?){2}\x00{2}\xFF{2}.{128,}[\x04-\xFF][\x00-\xFF]{3}\x00{4}$/Rs"; flowbits:isset,netbios.pnp.bind.attempt; reference:cve,CAN-2005-1983; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-039.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2002201; classtype:attempted-admin; sid:2002201; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -412,10 +302,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS SMB DCERPC PnP bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"|40 4E 9F 8D 3D A0 CE 11 8F 69 08 00 3E 30 05 1B|"; flowbits:set,netbios.pnp.bind.attempt; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002202; classtype:protocol-command-decode; sid:2002202; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2002202
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS SMB DCERPC PnP bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"|40 4E 9F 8D 3D A0 CE 11 8F 69 08 00 3E 30 05 1B|"; flowbits:set,netbios.pnp.bind.attempt; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002202; classtype:protocol-command-decode; sid:2002202; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -453,10 +339,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS SMB DCERPC PnP QueryResConfList exploit attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 00|"; within:10; distance:4; nocase; content:"|36 00|"; within:2; distance:19; pcre:"/(\x00\\\x00.*?){2}\x00{2}\xFF{2}.{128,}[\x04-\xFF][\x00-\xFF]{3}\x00{4}$/Rs"; flowbits:isset,netbios.pnp.bind.attempt; reference:cve,CAN-2005-1983; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-039.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2002203; classtype:attempted-admin; sid:2002203; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2002203
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS SMB DCERPC PnP QueryResConfList exploit attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 00|"; within:10; distance:4; nocase; content:"|36 00|"; within:2; distance:19; pcre:"/(\x00\\\x00.*?){2}\x00{2}\xFF{2}.{128,}[\x04-\xFF][\x00-\xFF]{3}\x00{4}$/Rs"; flowbits:isset,netbios.pnp.bind.attempt; reference:cve,CAN-2005-1983; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-039.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2002203; classtype:attempted-admin; sid:2002203; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -496,10 +378,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS NETBIOS SMB DCERPC NetrpPathCanonicalize request (possible MS06-040)"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB|25|"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00|"; within:9; distance:4; content:"|1f 00|"; distance:20; within:2; reference:url,www.microsoft.com/technet/security/bulletin/MS06-040.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2003081; classtype:misc-attack; sid:2003081; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2003081
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS NETBIOS SMB DCERPC NetrpPathCanonicalize request (possible MS06-040)"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB|25|"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00|"; within:9; distance:4; content:"|1f 00|"; distance:20; within:2; reference:url,www.microsoft.com/technet/security/bulletin/MS06-040.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2003081; classtype:misc-attack; sid:2003081; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -537,10 +415,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS NETBIOS SMB-DS DCERPC NetrpPathCanonicalize request (possible MS06-040)"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB|25|"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00|"; within:9; distance:4; content:"|1f 00|"; distance:20; within:2; reference:url,www.microsoft.com/technet/security/bulletin/MS06-040.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2003082; classtype:misc-attack; sid:2003082; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2003082
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS NETBIOS SMB-DS DCERPC NetrpPathCanonicalize request (possible MS06-040)"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB|25|"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00|"; within:9; distance:4; content:"|1f 00|"; distance:20; within:2; reference:url,www.microsoft.com/technet/security/bulletin/MS06-040.mspx; reference:url,doc.emergingthreats.net/bin/view/Main/2003082; classtype:misc-attack; sid:2003082; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -580,10 +454,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (1)"; content:"|0B|"; offset:2; depth:1; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008690; classtype:attempted-admin; sid:2008690; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008690
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (1)"; content:"|0B|"; offset:2; depth:1; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008690; classtype:attempted-admin; sid:2008690; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -621,10 +491,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (2)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008691; classtype:attempted-admin; sid:2008691; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008691
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (2)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008691; classtype:attempted-admin; sid:2008691; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -664,10 +530,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (3)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008692; classtype:attempted-admin; sid:2008692; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008692
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (3)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008692; classtype:attempted-admin; sid:2008692; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -705,10 +567,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (4)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008693; classtype:attempted-admin; sid:2008693; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008693
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (4)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008693; classtype:attempted-admin; sid:2008693; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -748,10 +606,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (5)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008694; classtype:attempted-admin; sid:2008694; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008694
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (5)"; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008694; classtype:attempted-admin; sid:2008694; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -789,10 +643,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (7)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008696; classtype:attempted-admin; sid:2008696; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008696
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (7)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008696; classtype:attempted-admin; sid:2008696; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -832,10 +682,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (8)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008697; classtype:attempted-admin; sid:2008697; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008697
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (8)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008697; classtype:attempted-admin; sid:2008697; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -873,10 +719,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (9)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008698; classtype:attempted-admin; sid:2008698; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008698
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (9)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008698; classtype:attempted-admin; sid:2008698; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -916,10 +758,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (10)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008699; classtype:attempted-admin; sid:2008699; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008699
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (10)"; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008699; classtype:attempted-admin; sid:2008699; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -957,10 +795,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 - Known Exploit Instance"; content:"|00 2e 00 2e 00 2f 00 2e 00 2e 00 2f 00 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 87|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008700; classtype:attempted-admin; sid:2008700; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008700
 `alert udp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 - Known Exploit Instance"; content:"|00 2e 00 2e 00 2f 00 2e 00 2e 00 2f 00 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 87|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008700; classtype:attempted-admin; sid:2008700; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1000,10 +834,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (11)"; flow:established,to_server; content:"|0B|"; offset:2; depth:1; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008701; classtype:attempted-admin; sid:2008701; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008701
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (11)"; flow:established,to_server; content:"|0B|"; offset:2; depth:1; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008701; classtype:attempted-admin; sid:2008701; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1041,10 +871,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (12)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008702; classtype:attempted-admin; sid:2008702; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008702
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (12)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008702; classtype:attempted-admin; sid:2008702; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1084,10 +910,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (13)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"/../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008703; classtype:attempted-admin; sid:2008703; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008703
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (13)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"/../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008703; classtype:attempted-admin; sid:2008703; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1125,10 +947,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (14)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008704; classtype:attempted-admin; sid:2008704; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008704
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (14)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008704; classtype:attempted-admin; sid:2008704; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1168,10 +986,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (15)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008705; classtype:attempted-admin; sid:2008705; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008705
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (15)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008705; classtype:attempted-admin; sid:2008705; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1209,10 +1023,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (16)"; flow:established,to_server; content:"|0B|"; offset:2; depth:1; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008706; classtype:attempted-admin; sid:2008706; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008706
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (16)"; flow:established,to_server; content:"|0B|"; offset:2; depth:1; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008706; classtype:attempted-admin; sid:2008706; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1252,10 +1062,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (17)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008707; classtype:attempted-admin; sid:2008707; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008707
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (17)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008707; classtype:attempted-admin; sid:2008707; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1293,10 +1099,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (18)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008708; classtype:attempted-admin; sid:2008708; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008708
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (18)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008708; classtype:attempted-admin; sid:2008708; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1336,10 +1138,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (19)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008709; classtype:attempted-admin; sid:2008709; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008709
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (19)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008709; classtype:attempted-admin; sid:2008709; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1377,10 +1175,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (20)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008710; classtype:attempted-admin; sid:2008710; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008710
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (20)"; flow:established,to_server; content:"|1F 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008710; classtype:attempted-admin; sid:2008710; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1420,10 +1214,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (22)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008712; classtype:attempted-admin; sid:2008712; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008712
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (22)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008712; classtype:attempted-admin; sid:2008712; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1461,10 +1251,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (23)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"/../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008713; classtype:attempted-admin; sid:2008713; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008713
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (23)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"/../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008713; classtype:attempted-admin; sid:2008713; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1504,10 +1290,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (24)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008714; classtype:attempted-admin; sid:2008714; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008714
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (24)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008714; classtype:attempted-admin; sid:2008714; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1545,10 +1327,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (25)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008715; classtype:attempted-admin; sid:2008715; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008715
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (25)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008715; classtype:attempted-admin; sid:2008715; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1588,10 +1366,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (27)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008717; classtype:attempted-admin; sid:2008717; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008717
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (27)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"..|5C|..|5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008717; classtype:attempted-admin; sid:2008717; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1629,10 +1403,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (28)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008718; classtype:attempted-admin; sid:2008718; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008718
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (28)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"../../"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008718; classtype:attempted-admin; sid:2008718; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1672,10 +1442,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (29)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008719; classtype:attempted-admin; sid:2008719; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008719
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (29)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 2F 00 2E 00 2E 00 2F|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008719; classtype:attempted-admin; sid:2008719; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1713,10 +1479,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (30)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008720; classtype:attempted-admin; sid:2008720; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2008720
 `alert tcp any any -> $HOME_NET 139 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 (30)"; flow:established,to_server; content:"|20 00|"; content:"|C8 4F 32 4B 70 16 D3 01 12 78 5A 47 BF 6E E1 88|"; content:"|00 2E 00 2E 00 5C 00 2E 00 2E 00 5C|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008720; classtype:attempted-admin; sid:2008720; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1756,10 +1518,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 - Known Exploit Instance (2)"; flow:established,to_server; content:"|00 2e 00 2e 00 2f 00 2e 00 2e 00 2f 00 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 87|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008721; classtype:attempted-admin; sid:2008721; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2008721
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows NETAPI Stack Overflow Inbound - MS08-067 - Known Exploit Instance (2)"; flow:established,to_server; content:"|00 2e 00 2e 00 2f 00 2e 00 2e 00 2f 00 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 87|"; reference:url,www.microsoft.com/technet/security/Bulletin/MS08-067.mspx; reference:cve,2008-4250; reference:url,www.kb.cert.org/vuls/id/827267; reference:url,doc.emergingthreats.net/bin/view/Main/2008721; classtype:attempted-admin; sid:2008721; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1797,10 +1555,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS NII Microsoft ASN.1 Library Buffer Overflow Exploit"; flow: to_server,established; content:"|A1 05 23 03 03 01 07|"; reference:url,www.microsoft.com/technet/security/bulletin/ms04-007.asp; reference:url,doc.emergingthreats.net/bin/view/Main/2000017; classtype:bad-unknown; sid:2000017; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2000017
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"ET NETBIOS NII Microsoft ASN.1 Library Buffer Overflow Exploit"; flow: to_server,established; content:"|A1 05 23 03 03 01 07|"; reference:url,www.microsoft.com/technet/security/bulletin/ms04-007.asp; reference:url,doc.emergingthreats.net/bin/view/Main/2000017; classtype:bad-unknown; sid:2000017; rev:6; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -1840,10 +1594,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS LSA exploit"; flow: to_server,established; content:"|313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131|"; offset: 78; depth: 192; reference:url,www.eeye.com/html/research/advisories/AD20040501.html; reference:url,www.upenn.edu/computing/virus/04/w32.sasser.worm.html; reference:url,doc.emergingthreats.net/bin/view/Main/2000032; classtype:misc-activity; sid:2000032; rev:9; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2000032
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS LSA exploit"; flow: to_server,established; content:"|313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131|"; offset: 78; depth: 192; reference:url,www.eeye.com/html/research/advisories/AD20040501.html; reference:url,www.upenn.edu/computing/virus/04/w32.sasser.worm.html; reference:url,doc.emergingthreats.net/bin/view/Main/2000032; classtype:misc-activity; sid:2000032; rev:9; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1881,10 +1631,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp any any -> $HOME_NET [139,445] (msg:"ET NETBIOS windows recycler request - suspicious"; flow:to_server,established; content:"|00 00 5C 00 72 00 65 00 63 00 79 00 63 00 6C 00 65 00 72 00 5C|"; reference:url,about-threats.trendmicro.com/ArchiveMalware.aspx?name=WORM_AUTORUN.ZBC; reference:url,www.symantec.com/connect/forums/virus-alert-crecyclers-1-5-21-1482476501-1644491937-682003330-1013svchostexe; reference:url,www.microsoft.com/security/portal/Threat/Encyclopedia/Entry.aspx?Name=Worm%3AWin32%2FFakerecy.A; reference:url,support.microsoft.com/kb/971029; classtype:suspicious-filename-detect; sid:2011526; rev:1; metadata:created_at 2010_09_27, updated_at 2010_09_27;)
 
 # 2011526
 `#alert tcp any any -> $HOME_NET [139,445] (msg:"ET NETBIOS windows recycler request - suspicious"; flow:to_server,established; content:"|00 00 5C 00 72 00 65 00 63 00 79 00 63 00 6C 00 65 00 72 00 5C|"; reference:url,about-threats.trendmicro.com/ArchiveMalware.aspx?name=WORM_AUTORUN.ZBC; reference:url,www.symantec.com/connect/forums/virus-alert-crecyclers-1-5-21-1482476501-1644491937-682003330-1013svchostexe; reference:url,www.microsoft.com/security/portal/Threat/Encyclopedia/Entry.aspx?Name=Worm%3AWin32%2FFakerecy.A; reference:url,support.microsoft.com/kb/971029; classtype:suspicious-filename-detect; sid:2011526; rev:1; metadata:created_at 2010_09_27, updated_at 2010_09_27;)
@@ -1924,10 +1670,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS MS04-007 Kill-Bill ASN1 exploit attempt"; flow: established,to_server; content:"CCCC|20f0fd7f|SVWf"; reference:url,www.phreedom.org/solar/exploits/msasn1-bitstring/; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; reference:cve,CAN-2003-0818; reference:url,doc.emergingthreats.net/bin/view/Main/2001944; classtype:attempted-admin; sid:2001944; rev:7; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2001944
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS MS04-007 Kill-Bill ASN1 exploit attempt"; flow: established,to_server; content:"CCCC|20f0fd7f|SVWf"; reference:url,www.phreedom.org/solar/exploits/msasn1-bitstring/; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; reference:cve,CAN-2003-0818; reference:url,doc.emergingthreats.net/bin/view/Main/2001944; classtype:attempted-admin; sid:2001944; rev:7; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -1965,10 +1707,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp any any -> $HOME_NET [139,445] (msg:"ET NETBIOS windows recycler .exe request - suspicious"; flow:to_server,established; content:"|00 00 5C 00 72 00 65 00 63 00 79 00 63 00 6C 00 65 00 72 00 5C|"; content:"|00 2E 00 65 00 78 00 65|"; distance:0; reference:url,about-threats.trendmicro.com/ArchiveMalware.aspx?name=WORM_AUTORUN.ZBC; reference:url,www.symantec.com/connect/forums/virus-alert-crecyclers-1-5-21-1482476501-1644491937-682003330-1013svchostexe; classtype:suspicious-filename-detect; sid:2011527; rev:4; metadata:created_at 2010_09_27, updated_at 2010_09_27;)
 
 # 2011527
 `#alert tcp any any -> $HOME_NET [139,445] (msg:"ET NETBIOS windows recycler .exe request - suspicious"; flow:to_server,established; content:"|00 00 5C 00 72 00 65 00 63 00 79 00 63 00 6C 00 65 00 72 00 5C|"; content:"|00 2E 00 65 00 78 00 65|"; distance:0; reference:url,about-threats.trendmicro.com/ArchiveMalware.aspx?name=WORM_AUTORUN.ZBC; reference:url,www.symantec.com/connect/forums/virus-alert-crecyclers-1-5-21-1482476501-1644491937-682003330-1013svchostexe; classtype:suspicious-filename-detect; sid:2011527; rev:4; metadata:created_at 2010_09_27, updated_at 2010_09_27;)
@@ -2008,10 +1746,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET 445 -> $HOME_NET any (msg:"ET NETBIOS Microsoft Windows SMB Client Race Condition Remote Code Execution"; flow:to_client,established; content:"|ff 53 4d 42 72|"; offset:4; depth:5; content:"|00 00 00 00|"; distance:0; within:4; byte_test:4,<,4356,30,relative,little; reference:url,www.exploit-db.com/exploits/12258/; reference:cve,2010-0017; reference:bid,38100; reference:url,www.microsoft.com/technet/security/Bulletin/MS10-006.mspx; classtype:attempted-user; sid:2012084; rev:2; metadata:created_at 2010_12_22, updated_at 2010_12_22;)
-
 # 2012084
 `alert tcp $EXTERNAL_NET 445 -> $HOME_NET any (msg:"ET NETBIOS Microsoft Windows SMB Client Race Condition Remote Code Execution"; flow:to_client,established; content:"|ff 53 4d 42 72|"; offset:4; depth:5; content:"|00 00 00 00|"; distance:0; within:4; byte_test:4,<,4356,30,relative,little; reference:url,www.exploit-db.com/exploits/12258/; reference:cve,2010-0017; reference:bid,38100; reference:url,www.microsoft.com/technet/security/Bulletin/MS10-006.mspx; classtype:attempted-user; sid:2012084; rev:2; metadata:created_at 2010_12_22, updated_at 2010_12_22;)
 ` 
@@ -2049,10 +1783,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB Trans2 Query_Fs_Attribute_Info SrvSmbQueryFsInformation Pool Buffer Overflow"; flow:to_server,established; content:"|ff 53 4d 42 32|"; offset:4; depth:5; content:"|00 00 00 00|"; distance:0; within:4; content:"|00 00|"; distance:30; within:2; content:"|00 03 00|"; distance:19; within:3; reference:url,www.exploit-db.com/exploits/14607/; reference:url,seclists.org/fulldisclosure/2010/Aug/122; reference:cve,2010-2550; reference:bid,42224; reference:url,www.microsoft.com/technet/security/Bulletin/MS10-054.mspx; classtype:attempted-user; sid:2012094; rev:2; metadata:created_at 2010_12_23, updated_at 2010_12_23;)
 
 # 2012094
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"ET NETBIOS SMB Trans2 Query_Fs_Attribute_Info SrvSmbQueryFsInformation Pool Buffer Overflow"; flow:to_server,established; content:"|ff 53 4d 42 32|"; offset:4; depth:5; content:"|00 00 00 00|"; distance:0; within:4; content:"|00 00|"; distance:30; within:2; content:"|00 03 00|"; distance:19; within:3; reference:url,www.exploit-db.com/exploits/14607/; reference:url,seclists.org/fulldisclosure/2010/Aug/122; reference:cve,2010-2550; reference:bid,42224; reference:url,www.microsoft.com/technet/security/Bulletin/MS10-054.mspx; classtype:attempted-user; sid:2012094; rev:2; metadata:created_at 2010_12_23, updated_at 2010_12_23;)
@@ -2092,10 +1822,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert udp $EXTERNAL_NET any -> $HOME_NET [137,138,139,445] (msg:"ET NETBIOS Microsoft Windows Server 2003 Active Directory Pre-Auth BROWSER ELECTION Heap Overflow Attempt"; content:"|42 4F 00|"; content:"BROWSER"; nocase; distance:0; content:"|08 09 A8 0F 01 20|"; fast_pattern; distance:0; isdataat:65,relative; content:!"|0A|"; within:65; reference:url,tools.cisco.com/security/center/viewAlert.x?alertId=22457; reference:bid,46360; classtype:attempted-admin; sid:2012317; rev:2; metadata:created_at 2011_02_17, updated_at 2011_02_17;)
-
 # 2012317
 `alert udp $EXTERNAL_NET any -> $HOME_NET [137,138,139,445] (msg:"ET NETBIOS Microsoft Windows Server 2003 Active Directory Pre-Auth BROWSER ELECTION Heap Overflow Attempt"; content:"|42 4F 00|"; content:"BROWSER"; nocase; distance:0; content:"|08 09 A8 0F 01 20|"; fast_pattern; distance:0; isdataat:65,relative; content:!"|0A|"; within:65; reference:url,tools.cisco.com/security/center/viewAlert.x?alertId=22457; reference:bid,46360; classtype:attempted-admin; sid:2012317; rev:2; metadata:created_at 2011_02_17, updated_at 2011_02_17;)
 ` 
@@ -2133,10 +1859,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102480; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102480
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102480; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2176,10 +1898,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102481; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102481
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102481; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2217,10 +1935,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102482; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102482
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102482; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2260,10 +1974,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102483; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102483
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102483; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2301,10 +2011,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102479; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102479
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102479; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2344,10 +2050,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102478; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102478
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102478; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2385,10 +2087,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102477; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102477
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102477; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2428,10 +2126,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|winreg|00|"; within:8; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102476; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102476
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|winreg|00|"; within:8; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102476; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2469,10 +2163,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"C|00 24 00 00 00|"; distance:2; nocase; content:!"I|00|P|00|C|00 24 00 00 00|"; within:10; distance:-10; nocase; classtype:protocol-command-decode; sid:2102472; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102472
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"C|00 24 00 00 00|"; distance:2; nocase; content:!"I|00|P|00|C|00 24 00 00 00|"; within:10; distance:-10; nocase; classtype:protocol-command-decode; sid:2102472; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2512,10 +2202,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ADMIN$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"A|00|D|00|M|00|I|00|N|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102473; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102473
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ADMIN$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"A|00|D|00|M|00|I|00|N|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102473; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2553,10 +2239,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB C$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"C|00 24 00 00 00|"; distance:2; nocase; content:!"I|00|P|00|C|00 24 00 00 00|"; within:10; distance:-10; nocase; classtype:protocol-command-decode; sid:2102470; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102470
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB C$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"C|00 24 00 00 00|"; distance:2; nocase; content:!"I|00|P|00|C|00 24 00 00 00|"; within:10; distance:-10; nocase; classtype:protocol-command-decode; sid:2102470; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2596,10 +2278,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB D$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"D|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102467; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102467
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB D$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"D|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102467; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2637,10 +2315,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"ADMIN|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102474; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102474
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"ADMIN|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102474; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2680,10 +2354,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"A|00|D|00|M|00|I|00|N|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102475; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102475
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"A|00|D|00|M|00|I|00|N|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102475; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2721,10 +2391,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"C|24 00|"; distance:2; nocase; content:!"IPC|24 00|"; within:5; distance:-5; nocase; classtype:protocol-command-decode; sid:2102471; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102471
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"C|24 00|"; distance:2; nocase; content:!"IPC|24 00|"; within:5; distance:-5; nocase; classtype:protocol-command-decode; sid:2102471; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2764,10 +2430,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103425; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103425
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103425; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2805,10 +2467,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103426; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103426
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103426; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2848,10 +2506,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103177; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103177
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103177; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2889,10 +2543,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103176; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103176
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103176; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2932,10 +2582,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103427; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103427
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103427; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2973,10 +2619,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103428; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103428
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103428; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3016,10 +2658,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103179; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103179
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103179; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3057,10 +2695,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103178; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103178
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103178; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3100,10 +2734,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103377; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103377
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103377; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3141,10 +2771,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103378; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103378
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103378; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3184,10 +2810,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103379; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103379
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103379; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3225,10 +2847,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103380; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103380
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103380; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3268,10 +2886,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103393; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103393
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103393; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3309,10 +2923,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103396; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103396
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103396; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3352,10 +2962,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102942; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102942
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102942; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3393,10 +2999,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102943; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102943
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102943; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3436,10 +3038,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102944; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102944
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102944; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3477,10 +3075,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102945; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102945
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102945; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3520,10 +3114,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103256; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103256
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103256; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3561,10 +3151,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103257; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103257
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103257; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3604,10 +3190,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103258; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103258
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103258; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3645,10 +3227,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103259; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103259
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103259; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3688,10 +3266,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102946; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102946
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102946; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3729,10 +3303,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102936; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102936
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102936; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3772,10 +3342,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102947; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102947
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102947; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3813,10 +3379,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102937; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102937
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102937; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3856,10 +3418,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; pcre:"/^.{4}/R"; byte_test:4,>,1024,36,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103018; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103018
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; pcre:"/^.{4}/R"; byte_test:4,>,1024,36,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103018; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3897,10 +3455,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; pcre:"/^.{4}/R"; byte_test:4,>,1024,36,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103020; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103020
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; pcre:"/^.{4}/R"; byte_test:4,>,1024,36,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103020; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3940,10 +3494,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103219; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103219
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103219; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3981,10 +3531,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; reference:url,www.microsoft.com/technet/security/bulletin/MS00-040.mspx; classtype:attempted-admin; sid:2103218; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103218
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; reference:url,www.microsoft.com/technet/security/bulletin/MS00-040.mspx; classtype:attempted-admin; sid:2103218; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4024,10 +3570,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103221; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103221
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103221; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4065,10 +3607,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103220; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103220
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103220; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4108,10 +3646,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103409; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103409
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103409; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4149,10 +3683,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103410; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103410
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103410; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4192,10 +3722,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103411; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103411
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103411; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4233,10 +3759,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103412; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103412
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103412; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4276,10 +3798,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103240; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103240
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103240; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4317,10 +3835,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103241; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103241
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103241; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4360,10 +3874,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103115; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103115
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103115; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4401,10 +3911,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103114; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103114
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103114; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4444,10 +3950,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103117; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103117
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103117; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4485,10 +3987,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103116; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103116
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103116; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4528,10 +4026,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103098; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103098
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103098; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4569,10 +4063,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|llsrpc|00|"; within:8; distance:78; nocase; classtype:protocol-command-decode; sid:2103090; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103090
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|llsrpc|00|"; within:8; distance:78; nocase; classtype:protocol-command-decode; sid:2103090; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4612,10 +4102,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103099; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103099
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103099; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4653,10 +4139,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103160; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103160
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103160; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4696,10 +4178,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103161; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103161
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103161; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4737,10 +4215,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102932; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102932
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102932; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4780,10 +4254,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103162; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103162
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103162; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4821,10 +4291,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103163; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103163
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103163; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4864,10 +4330,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|nddeapi|00|"; within:9; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102928; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102928
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|nddeapi|00|"; within:9; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102928; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4905,10 +4367,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102933; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102933
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102933; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4948,10 +4406,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102929; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102929
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102929; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4989,10 +4443,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103202; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103202
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103202; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5032,10 +4482,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102940; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102940
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102940; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5073,10 +4519,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|winreg|00|"; within:8; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102174; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102174
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|winreg|00|"; within:8; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102174; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5116,10 +4558,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103203; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103203
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103203; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5157,10 +4595,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103204; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103204
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103204; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5200,10 +4634,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102941; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102941
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102941; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5241,10 +4671,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102175; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102175
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:78; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102175; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5284,10 +4710,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103205; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103205
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103205; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5325,10 +4747,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103433; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103433
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103433; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5368,10 +4786,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103434; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103434
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103434; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5409,10 +4823,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103185; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103185
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103185; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5452,10 +4862,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103184; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103184
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103184; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5493,10 +4899,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103435; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103435
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103435; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5536,10 +4938,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103436; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103436
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103436; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5577,10 +4975,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103187; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103187
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103187; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5620,10 +5014,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103186; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103186
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103186; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5661,10 +5051,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"D|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102468; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102468
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"D|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102468; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5704,10 +5090,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"D|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102469; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102469
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"D|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102469; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5745,10 +5127,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103385; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103385
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103385; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5788,10 +5166,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103386; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103386
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103386; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5829,10 +5203,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103387; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103387
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103387; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5872,10 +5242,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103388; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103388
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103388; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5913,10 +5279,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"IPC|24 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102465; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102465
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"IPC|24 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102465; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -5956,10 +5318,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"I|00|P|00|C|00 24 00 00 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102466; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102466
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"I|00|P|00|C|00 24 00 00 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102466; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -5997,10 +5355,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103401; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103401
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103401; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6040,10 +5394,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103402; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103402
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103402; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6081,10 +5431,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103403; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103403
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103403; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6124,10 +5470,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103404; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103404
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103404; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6165,10 +5507,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103264; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103264
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103264; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6208,10 +5546,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103265; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103265
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103265; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6249,10 +5583,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103266; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103266
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103266; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6292,10 +5622,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103267; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103267
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103267; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6333,10 +5659,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102948; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102948
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102948; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6376,10 +5698,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102939; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102939
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102939; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6417,10 +5735,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; pcre:"/^.{4}/R"; byte_test:4,>,1024,36,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103024; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103024
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; pcre:"/^.{4}/R"; byte_test:4,>,1024,36,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103024; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6460,10 +5774,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103227; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103227
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103227; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6501,10 +5811,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103226; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103226
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103226; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6544,10 +5850,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103229; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103229
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103229; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6585,10 +5887,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103228; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103228
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103228; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6628,10 +5926,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103417; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103417
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103417; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6669,10 +5963,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103418; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103418
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103418; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6712,10 +6002,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103419; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103419
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103419; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6753,10 +6039,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103420; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103420
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode little endian attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103420; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6796,10 +6078,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103248; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103248
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103248; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6837,10 +6115,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103249; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103249
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103249; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6880,10 +6154,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103250; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103250
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103250; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -6921,10 +6191,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103251; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103251
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103251; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -6964,10 +6230,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103123; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103123
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103123; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7005,10 +6267,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103122; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103122
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103122; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7048,10 +6306,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103125; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103125
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103125; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7089,10 +6343,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103124; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103124
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103124; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7132,10 +6382,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103106; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103106
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103106; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7173,10 +6419,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|llsrpc|00|"; within:8; distance:78; nocase; classtype:protocol-command-decode; sid:2103094; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103094
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|llsrpc|00|"; within:8; distance:78; nocase; classtype:protocol-command-decode; sid:2103094; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7216,10 +6458,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103107; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103107
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103107; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7257,10 +6495,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103108; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103108
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103108; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7300,10 +6534,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:78; nocase; classtype:protocol-command-decode; sid:2103095; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103095
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:78; nocase; classtype:protocol-command-decode; sid:2103095; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7341,10 +6571,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103109; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103109
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103109; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7384,10 +6610,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103170; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103170
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103170; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7425,10 +6647,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103171; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103171
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103171; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7468,10 +6686,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102934; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102934
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102934; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7509,10 +6723,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|nddeapi|00|"; within:9; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102930; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102930
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|5C|nddeapi|00|"; within:9; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102930; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7552,10 +6762,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102935; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102935
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102935; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7593,10 +6799,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102931; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102931
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:78; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102931; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7636,10 +6838,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103210; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103210
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103210; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7677,10 +6875,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103211; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103211
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103211; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7720,10 +6914,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103212; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103212
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103212; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7761,10 +6951,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103213; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103213
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103213; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7804,10 +6990,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103394; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103394
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103394; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7845,10 +7027,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103395; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103395
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103395; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7888,10 +7066,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103242; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103242
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103242; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -7929,10 +7103,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103243; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103243
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103243; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -7972,10 +7142,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103100; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103100
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103100; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8013,10 +7179,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:78; nocase;  classtype:protocol-command-decode; sid:2103091; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103091
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB|A2|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:78; nocase;  classtype:protocol-command-decode; sid:2103091; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8056,10 +7218,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103101; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103101
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103101; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8097,10 +7255,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102938; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102938
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102938; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8140,10 +7294,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102949; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102949
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102949; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8181,10 +7331,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103168; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103168
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103168; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8224,10 +7370,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103169; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103169
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue little endian bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB%"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103169; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8265,10 +7407,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IPC$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"I|00|P|00|C|00 24 00 00 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2100538; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100538
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IPC$ unicode share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_jump:2,34,little,relative; content:"I|00|P|00|C|00 24 00 00 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2100538; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8308,10 +7446,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IPC$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"IPC|24 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2100537; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100537
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IPC$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"IPC|24 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2100537; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8349,10 +7483,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB D$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"D|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2100536; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100536
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB D$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"D|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2100536; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8392,10 +7522,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CD..."; flow:to_server,established; content:"|5C|...|00 00 00|"; reference:arachnids,337; classtype:attempted-recon; sid:2100535; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100535
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CD..."; flow:to_server,established; content:"|5C|...|00 00 00|"; reference:arachnids,337; classtype:attempted-recon; sid:2100535; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8433,10 +7559,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CD.."; flow:to_server,established; content:"|5C|../|00 00 00|"; reference:arachnids,338; classtype:attempted-recon; sid:2100534; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100534
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CD.."; flow:to_server,established; content:"|5C|../|00 00 00|"; reference:arachnids,338; classtype:attempted-recon; sid:2100534; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8476,10 +7598,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB C$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"C|24 00|"; distance:2; nocase; content:!"IPC|24 00|"; within:5; distance:-5; nocase; classtype:protocol-command-decode; sid:2100533; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100533
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB C$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"C|24 00|"; distance:2; nocase; content:!"IPC|24 00|"; within:5; distance:-5; nocase; classtype:protocol-command-decode; sid:2100533; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8517,10 +7635,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ADMIN$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"ADMIN|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2100532; rev:14; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100532
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ADMIN$ share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_jump:2,34,little,relative; content:"ADMIN|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2100532; rev:14; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8560,10 +7674,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS NT NULL session"; flow:to_server,established; content:"|00 00 00 00|W|00|i|00|n|00|d|00|o|00|w|00|s|00| |00|N|00|T|00| |00|1|00|3|00|8|00|1"; reference:arachnids,204; reference:bugtraq,1163; reference:cve,2000-0347; classtype:attempted-recon; sid:2100530; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100530
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS NT NULL session"; flow:to_server,established; content:"|00 00 00 00|W|00|i|00|n|00|d|00|o|00|w|00|s|00| |00|N|00|T|00| |00|1|00|3|00|8|00|1"; reference:arachnids,204; reference:bugtraq,1163; reference:cve,2000-0347; classtype:attempted-recon; sid:2100530; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8601,10 +7711,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS DOS RFPoison"; flow:to_server,established; content:"|5C 00 5C 00|*|00|S|00|M|00|B|00|S|00|E|00|R|00|V|00|E|00|R|00 00 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00|"; reference:arachnids,454; classtype:attempted-dos; sid:2100529; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100529
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS DOS RFPoison"; flow:to_server,established; content:"|5C 00 5C 00|*|00|S|00|M|00|B|00|S|00|E|00|R|00|V|00|E|00|R|00 00 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00|"; reference:arachnids,454; classtype:attempted-dos; sid:2100529; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8644,10 +7750,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,!&,128,6,relative; pcre:"/^.{27}/R"; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2102382; rev:22; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102382
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,!&,128,6,relative; pcre:"/^.{27}/R"; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2102382; rev:22; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8685,10 +7787,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_test:4,&,2147483648,48,relative,little; content:!"NTLMSSP"; within:7; distance:54; asn1:double_overflow, bitstring_overflow, relative_offset 54, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2102383; rev:21; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102383
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,!&,128,6,relative; byte_test:4,&,2147483648,48,relative,little; content:!"NTLMSSP"; within:7; distance:54; asn1:double_overflow, bitstring_overflow, relative_offset 54, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2102383; rev:21; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8728,10 +7826,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP unicode asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_test:4,&,2147483648,48,relative,little; content:!"NTLMSSP"; within:7; distance:54; asn1:double_overflow, bitstring_overflow, relative_offset 54, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103003; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103003
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP unicode asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_test:4,&,2147483648,48,relative,little; content:!"NTLMSSP"; within:7; distance:54; asn1:double_overflow, bitstring_overflow, relative_offset 54, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103003; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8769,10 +7863,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup AndX request unicode username overflow attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,&,128,6,relative; pcre:"/^.{27}/sR"; byte_test:4,!&,2147483648,21,relative,little; content:!"|00 00|"; within:510; distance:29; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:protocol-command-decode; sid:2102403; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102403
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup AndX request unicode username overflow attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,&,128,6,relative; pcre:"/^.{27}/sR"; byte_test:4,!&,2147483648,21,relative,little; content:!"|00 00|"; within:510; distance:29; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:protocol-command-decode; sid:2102403; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8812,10 +7902,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup AndX request unicode username overflow attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,!&,2147483648,21,relative,little; content:!"|00 00|"; within:510; distance:29; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:protocol-command-decode; sid:2102404; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102404
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup AndX request unicode username overflow attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,!&,2147483648,21,relative,little; content:!"|00 00|"; within:510; distance:29; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:protocol-command-decode; sid:2102404; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8853,10 +7939,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103437; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103437
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103437; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8896,10 +7978,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103429; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103429
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103429; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -8937,10 +8015,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC CoGetInstanceFromFile little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|05|"; depth:1; byte_test:1,&,16,3,relative; content:"|00|"; offset:1;depth:1;  content:"|01 00|";distance:19; within:2; byte_test:4,>,128,20,relative,little; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103158; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103158
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC CoGetInstanceFromFile little endian overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|05|"; depth:1; byte_test:1,&,16,3,relative; content:"|00|"; offset:1;depth:1;  content:"|01 00|";distance:19; within:2; byte_test:4,>,128,20,relative,little; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103158; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -8980,10 +8054,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC CoGetInstanceFromFile overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103159; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103159
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC CoGetInstanceFromFile overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103159; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9021,10 +8091,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IActivation bind attempt"; flow:established,to_server; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; classtype:protocol-command-decode; sid:2103275; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103275
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IActivation bind attempt"; flow:established,to_server; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; classtype:protocol-command-decode; sid:2103275; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9064,10 +8130,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IActivation little endian bind attempt"; flow:established,to_server; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; classtype:protocol-command-decode; sid:2103276; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103276
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IActivation little endian bind attempt"; flow:established,to_server; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; classtype:protocol-command-decode; sid:2103276; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9105,10 +8167,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC ISystemActivator path overflow attempt big endian"; flow:to_server,established; content:"|05|"; byte_test:1,<,16,3,relative; content:"|5C 00 5C 00|"; byte_test:4,>,256,-8,relative; flowbits:isset,dce.isystemactivator.bind; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103198; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103198
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC ISystemActivator path overflow attempt big endian"; flow:to_server,established; content:"|05|"; byte_test:1,<,16,3,relative; content:"|5C 00 5C 00|"; byte_test:4,>,256,-8,relative; flowbits:isset,dce.isystemactivator.bind; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103198; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9148,10 +8206,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC ISystemActivator path overflow attempt little endian"; flow:to_server,established; content:"|05|"; byte_test:1,&,16,3,relative; content:"|5C 5C|"; byte_test:4,>,256,-8,little,relative; flowbits:isset,dce.isystemactivator.bind; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103197; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103197
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC ISystemActivator path overflow attempt little endian"; flow:to_server,established; content:"|05|"; byte_test:1,&,16,3,relative; content:"|5C 5C|"; byte_test:4,>,256,-8,little,relative; flowbits:isset,dce.isystemactivator.bind; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103197; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9189,10 +8243,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IrotIsRunning attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_test:4,>,128,0,relative; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103238; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103238
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IrotIsRunning attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_test:4,>,128,0,relative; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103238; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9232,10 +8282,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IrotIsRunning little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_test:4,>,128,0,little,relative; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103239; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103239
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC IrotIsRunning little endian attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_test:4,>,128,0,little,relative; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103239; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9273,10 +8319,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC irot bind attempt"; flow:established,to_server; content:"|05|"; depth:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103236; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103236
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC irot bind attempt"; flow:established,to_server; content:"|05|"; depth:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103236; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9316,10 +8358,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC irot little endian bind attempt"; flow:established,to_server; content:"|05|"; depth:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103237; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103237
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC irot little endian bind attempt"; flow:established,to_server; content:"|05|"; depth:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103237; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9357,10 +8395,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC msqueue bind attempt"; flow:to_server,established; content:"|05|"; depth:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103156; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103156
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC msqueue bind attempt"; flow:to_server,established; content:"|05|"; depth:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103156; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9400,10 +8434,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC msqueue little endian bind attempt"; flow:to_server,established; content:"|05|"; depth:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103157; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103157
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC msqueue little endian bind attempt"; flow:to_server,established; content:"|05|"; depth:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103157; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9441,10 +8471,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 137 (msg:"GPL NETBIOS name query overflow attempt TCP"; flow:to_server,established; byte_test:1,&,64,2; content:" "; offset:12; isdataat:56,relative; metadata: former_category NETBIOS; reference:bugtraq,9624; reference:cve,2003-0825; classtype:attempted-admin; sid:2103195; rev:5; metadata:created_at 2010_09_23, updated_at 2017_11_10;)
 
 # 2103195
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 137 (msg:"GPL NETBIOS name query overflow attempt TCP"; flow:to_server,established; byte_test:1,&,64,2; content:" "; offset:12; isdataat:56,relative; metadata: former_category NETBIOS; reference:bugtraq,9624; reference:cve,2003-0825; classtype:attempted-admin; sid:2103195; rev:5; metadata:created_at 2010_09_23, updated_at 2017_11_10;)
@@ -9484,10 +8510,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103180; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103180
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103180; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9525,10 +8547,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103430; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103430
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103430; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9568,10 +8586,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103181; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103181
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103181; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9609,10 +8623,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103431; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103431
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103431; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9652,10 +8662,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103182; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103182
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103182; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9693,10 +8699,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103432; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103432
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103432; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9736,10 +8738,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103381; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103381
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103381; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9777,10 +8775,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103382; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103382
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103382; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9820,10 +8814,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103383; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103383
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103383; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9861,10 +8851,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103384; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103384
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IActivation unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103384; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9904,10 +8890,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103397; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103397
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103397; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -9945,10 +8927,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103398; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103398
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103398; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -9988,10 +8966,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103399; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103399
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103399; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10029,10 +9003,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103400; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103400
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB ISystemActivator unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103400; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10072,10 +9042,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103260; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103260
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103260; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10113,10 +9079,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103261; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103261
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103261; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10156,10 +9118,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103262; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103262
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103262; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10197,10 +9155,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103263; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103263
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB IrotIsRunning unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103263; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10240,10 +9194,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; isdataat:4,relative; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103022; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103022
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; pcre:"/^.{27}/R"; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; isdataat:4,relative; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103022; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10281,10 +9231,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103019; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103019
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103019; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10324,10 +9270,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103034; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103034
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103034; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10365,10 +9307,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103026; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103026
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103026; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10408,10 +9346,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103035; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103035
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103035; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10449,10 +9383,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103027; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103027
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103027; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10492,10 +9422,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103051; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103051
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103051; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10533,10 +9459,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103042; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103042
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103042; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10576,10 +9498,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103050; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103050
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103050; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10617,10 +9535,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103036; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103036
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103036; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10660,10 +9574,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103028; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103028
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103028; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10701,10 +9611,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103037; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103037
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103037; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10744,10 +9650,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103029; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103029
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103029; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10785,10 +9687,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; isdataat:4,relative; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103045; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103045
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; isdataat:4,relative; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103045; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10828,10 +9726,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; isdataat:4,relative; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103053; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103053
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; isdataat:4,relative; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103053; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10869,10 +9763,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103044; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103044
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103044; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10912,10 +9802,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103052; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103052
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103052; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -10953,10 +9839,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103038; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103038
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103038; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -10996,10 +9878,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103030; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103030
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103030; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11037,10 +9915,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103039; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103039
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103039; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11080,10 +9954,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103031; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103031
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103031; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11121,10 +9991,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103047; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103047
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103047; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11164,10 +10030,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103055; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103055
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103055; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11205,10 +10067,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103046; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103046
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103046; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11248,10 +10106,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103054; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103054
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,!&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103054; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11289,10 +10143,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103040; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103040
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103040; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11332,10 +10182,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103032; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103032
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103032; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11373,10 +10219,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103041; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103041
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx DACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103041; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11416,10 +10258,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103033; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103033
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx SACL overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; byte_test:4,>,32,-16,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103033; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11457,10 +10295,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103049; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103049
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103049; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11500,10 +10334,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103057; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103057
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103057; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11541,10 +10371,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103048; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103048
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103048; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11584,10 +10410,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103056; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103056
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB|A0|"; within:5; distance:3; byte_test:1,&,128,6,relative; content:"|01 00|"; within:2; distance:64; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:20; byte_jump:4,20,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103056; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11625,10 +10447,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103222; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103222
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103222; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11668,10 +10486,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103223; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103223
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103223; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11709,10 +10523,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103224; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103224
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103224; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11752,10 +10562,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103225; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103225
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB OpenKey unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103225; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11793,10 +10599,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103413; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103413
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103413; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11836,10 +10638,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103414; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103414
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103414; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11877,10 +10675,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103415; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103415
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103415; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -11920,10 +10714,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103416; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103416
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB RemoteActivation unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103416; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -11961,10 +10751,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103001; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103001
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103001; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12004,10 +10790,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP unicode andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103002; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103002
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP unicode andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103002; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12045,10 +10827,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103244; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103244
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103244; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12088,10 +10866,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103245; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103245
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103245; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12129,10 +10903,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103246; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103246
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103246; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12172,10 +10942,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103247; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103247
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB irot unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103247; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12213,10 +10979,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103118; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103118
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103118; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12256,10 +11018,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103119; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103119
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103119; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12297,10 +11055,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103120; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103120
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103120; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12340,10 +11094,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103121; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103121
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrconnect unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103121; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12381,10 +11131,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103102; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103102
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103102; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12424,10 +11170,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|llsrpc|00|"; within:8; distance:51; nocase; classtype:protocol-command-decode; sid:2103092; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103092
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|llsrpc|00|"; within:8; distance:51; nocase; classtype:protocol-command-decode; sid:2103092; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12465,10 +11207,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103103; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103103
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103103; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12508,10 +11246,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103104; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103104
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103104; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12549,10 +11283,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:51; nocase; classtype:protocol-command-decode; sid:2103093; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103093
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:51; nocase; classtype:protocol-command-decode; sid:2103093; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12592,10 +11322,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103105; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103105
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB llsrpc unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103105; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12633,10 +11359,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103164; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103164
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103164; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12676,10 +11398,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103165; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103165
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103165; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12717,10 +11435,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103166; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103166
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103166; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12760,10 +11474,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103167; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103167
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB msqueue unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103167; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12801,10 +11511,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103206; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103206
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103206; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12844,10 +11550,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103207; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103207
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103207; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12885,10 +11587,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103208; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103208
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103208; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -12928,10 +11626,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103209; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103209
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103209; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -12969,10 +11663,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103188; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103188
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103188; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13012,10 +11702,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103438; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103438
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103438; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13053,10 +11739,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103189; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103189
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,128,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103189; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13096,10 +11778,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103439; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103439
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 04|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103439; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13137,10 +11815,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103190; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103190
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 01|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103190; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13180,10 +11854,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103440; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103440
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.isystemactivator.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|04 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103440; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13221,10 +11891,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103191; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103191
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS CoGetInstanceFromFile unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103191; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13264,10 +11930,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103389; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103389
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103389; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13305,10 +11967,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103390; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103390
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103390; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13348,10 +12006,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103391; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103391
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103391; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13389,10 +12043,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103392; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103392
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IActivation unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; flowbits:set,dce.iactivation.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103392; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13432,10 +12082,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103405; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103405
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103405; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13473,10 +12119,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103406; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103406
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103406; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13516,10 +12158,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103407; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103407
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103407; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13557,10 +12195,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103408; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103408
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ISystemActivator unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2103408; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13600,10 +12234,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103268; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103268
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103268; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13641,10 +12271,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103269; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103269
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103269; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13684,10 +12310,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103270; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103270
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 02|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103270; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13725,10 +12347,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103271; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103271
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IrotIsRunning unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.irot; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|02 00|"; within:2; distance:19; byte_jump:4,8,relative,little,align; byte_test:4,>,1024,0,little; reference:bugtraq,6005; reference:cve,2002-1561; reference:url,www.microsoft.com/technet/security/bulletin/MS03-010.mspx; classtype:protocol-command-decode; sid:2103271; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13768,10 +12386,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103023; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103023
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103023; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13809,10 +12423,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103025; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103025
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NT Trans NT CREATE unicode andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103025; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13852,10 +12462,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103230; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103230
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,1024,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103230; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13893,10 +12499,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103231; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103231
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,1024,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103231; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -13936,10 +12538,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103232; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103232
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0F|"; within:2; distance:19; byte_test:2,>,2048,20,relative; reference:bugtraq,1331; reference:cve,2000-0377; classtype:attempted-admin; sid:2103232; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -13977,10 +12575,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; reference:url,www.microsoft.com/technet/security/bulletin/MS00-040.mspx; classtype:attempted-admin; sid:2103233; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103233
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS OpenKey unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0F 00|"; within:2; distance:19; byte_test:2,>,2048,20,relative,little; reference:bugtraq,1331; reference:cve,2000-0377; reference:url,www.microsoft.com/technet/security/bulletin/MS00-040.mspx; classtype:attempted-admin; sid:2103233; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14020,10 +12614,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103421; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103421
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6; classtype:protocol-command-decode; sid:2103421; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14061,10 +12651,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103422; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103422
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 5C|"; byte_test:4,>,256,6,little; classtype:protocol-command-decode; sid:2103422; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14104,10 +12690,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103423; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103423
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8; classtype:protocol-command-decode; sid:2103423; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14145,10 +12727,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103424; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103424
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS RemoteActivation unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,dce.iactivation.bind; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; content:"|5C 00 5C 00|"; byte_test:4,>,256,8,little; classtype:protocol-command-decode; sid:2103424; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14188,10 +12766,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103004; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103004
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103004; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14229,10 +12803,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP unicode andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103005; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103005
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup NTMLSSP unicode andx asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"s"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_test:4,&,2147483648,21,relative,little; content:!"NTLMSSP"; within:7; distance:27; asn1:double_overflow, bitstring_overflow, relative_offset 27, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103005; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14272,10 +12842,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103142; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103142
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103142; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14313,10 +12879,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103252; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103252
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103252; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14356,10 +12918,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103253; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103253
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103253; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14397,10 +12955,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103254; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103254
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103254; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14440,10 +12994,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103255; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103255
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS irot unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"`|9E E7 B9|R=|CE 11 AA A1 00 00|i|01 29|?"; within:16; distance:29; flowbits:set,smb.tree.bind.irot; flowbits:noalert; classtype:protocol-command-decode; sid:2103255; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14481,10 +13031,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103126; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103126
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103126; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14524,10 +13070,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103127; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103127
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,52,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103127; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14565,10 +13107,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103128; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103128
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103128; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14608,10 +13146,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103129; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103129
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrconnect unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.llsrpc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 00|"; within:2; distance:19; byte_test:4,>,104,0,relative; reference:url,www.microsoft.com/technet/security/bulletin/ms05-010.mspx; classtype:attempted-admin; sid:2103129; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14649,10 +13183,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103110; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103110
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103110; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14692,10 +13222,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|llsrpc|00|"; within:8; distance:51; nocase; classtype:protocol-command-decode; sid:2103096; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103096
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|llsrpc|00|"; within:8; distance:51; nocase; classtype:protocol-command-decode; sid:2103096; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14733,10 +13259,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103111; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103111
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103111; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14776,10 +13298,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103112; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103112
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103112; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14817,10 +13335,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:51; nocase; classtype:protocol-command-decode; sid:2103097; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103097
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|l|00|l|00|s|00|r|00|p|00|c|00 00 00|"; within:16; distance:51; nocase; classtype:protocol-command-decode; sid:2103097; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14860,10 +13374,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103113; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103113
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS llsrpc unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"@|FD|,4l<|CE 11 A8 93 08 00|+.|9C|m"; within:16; distance:29; flowbits:set,smb.tree.bind.llsrpc; classtype:protocol-command-decode; sid:2103113; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14901,10 +13411,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103172; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103172
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103172; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -14944,10 +13450,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103173; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103173
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103173; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -14985,10 +13487,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103174; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103174
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103174; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15028,10 +13526,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103175; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103175
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS msqueue unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|B0 01|R|97 CA|Y|D0 11 A8 D5 00 A0 C9 0D 80|Q"; within:16; distance:29; flowbits:set,smb.tree.bind.msqueue; flowbits:noalert; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2103175; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15069,10 +13563,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103214; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103214
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103214; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15112,10 +13602,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103215; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103215
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103215; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15153,10 +13639,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103216; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103216
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,!&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103216; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15196,10 +13678,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103217; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103217
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode little endian andx bind attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; isdataat:4,relative; content:"|05|"; byte_test:1,&,16,3,relative; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; flowbits:noalert; classtype:protocol-command-decode; sid:2103217; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15237,10 +13715,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert udp $EXTERNAL_NET any -> $HOME_NET 137 (msg:"GPL NETBIOS name query overflow attempt UDP"; byte_test:1,&,64,2; content:" "; offset:12; isdataat:56,relative; reference:bugtraq,9624; reference:cve,2003-0825; classtype:attempted-admin; sid:2103196; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103196
 `#alert udp $EXTERNAL_NET any -> $HOME_NET 137 (msg:"GPL NETBIOS name query overflow attempt UDP"; byte_test:1,&,64,2; content:" "; offset:12; isdataat:56,relative; reference:bugtraq,9624; reference:cve,2003-0825; classtype:attempted-admin; sid:2103196; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15280,10 +13754,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert udp $EXTERNAL_NET any -> $HOME_NET 42 (msg:"GPL NETBIOS WINS name query overflow attempt UDP"; byte_test:1,&,64,2; content:" "; offset:12; isdataat:56,relative; reference:bugtraq,9624; reference:cve,2003-0825; reference:url,www.microsoft.com/technet/security/bulletin/MS04-006.mspx; classtype:attempted-admin; sid:2103200; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103200
 `#alert udp $EXTERNAL_NET any -> $HOME_NET 42 (msg:"GPL NETBIOS WINS name query overflow attempt UDP"; byte_test:1,&,64,2; content:" "; offset:12; isdataat:56,relative; reference:bugtraq,9624; reference:cve,2003-0825; reference:url,www.microsoft.com/technet/security/bulletin/MS04-006.mspx; classtype:attempted-admin; sid:2103200; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15321,10 +13791,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert udp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS Messenger message overflow attempt"; content:"|04 00|"; depth:2; byte_test:1,!&,16,2,relative; content:"|F8 91|{Z|00 FF D0 11 A9 B2 00 C0|O|B6 E6 FC|"; within:16; distance:22; content:"|00 00|"; within:2; distance:28; byte_jump:4,18,align,relative; byte_jump:4,8,align,relative; byte_test:4,>,1024,8,relative; reference:bugtraq,8826; reference:cve,2003-0717; classtype:attempted-admin; sid:2103235; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103235
 `#alert udp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS Messenger message overflow attempt"; content:"|04 00|"; depth:2; byte_test:1,!&,16,2,relative; content:"|F8 91|{Z|00 FF D0 11 A9 B2 00 C0|O|B6 E6 FC|"; within:16; distance:22; content:"|00 00|"; within:2; distance:28; byte_jump:4,18,align,relative; byte_jump:4,8,align,relative; byte_test:4,>,1024,8,relative; reference:bugtraq,8826; reference:cve,2003-0717; classtype:attempted-admin; sid:2103235; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15364,10 +13830,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert udp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS Messenger message little endian overflow attempt"; content:"|04 00|"; depth:2; byte_test:1,&,16,2,relative; content:"|F8 91|{Z|00 FF D0 11 A9 B2 00 C0|O|B6 E6 FC|"; within:16; distance:22; content:"|00 00|"; within:2; distance:28; byte_jump:4,18,little,align,relative; byte_jump:4,8,little,align,relative; byte_test:4,>,1024,8,little,relative; reference:bugtraq,8826; reference:cve,2003-0717; classtype:attempted-admin; sid:2103234; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103234
 `#alert udp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS Messenger message little endian overflow attempt"; content:"|04 00|"; depth:2; byte_test:1,&,16,2,relative; content:"|F8 91|{Z|00 FF D0 11 A9 B2 00 C0|O|B6 E6 FC|"; within:16; distance:22; content:"|00 00|"; within:2; distance:28; byte_jump:4,18,little,align,relative; byte_jump:4,8,little,align,relative; byte_test:4,>,1024,8,little,relative; reference:bugtraq,8826; reference:cve,2003-0717; classtype:attempted-admin; sid:2103234; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15405,10 +13867,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC enumerate printers request attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; fast_pattern; within:12; distance:5; nocase; content:"|05|"; distance:1; content:"|00|"; within:1; distance:1; byte_test:1,&,3,0,relative; content:"|00 00|"; within:2; distance:19; flowbits:isset,dce.printer.bind; classtype:attempted-recon; sid:2102349; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102349
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC enumerate printers request attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; fast_pattern; within:12; distance:5; nocase; content:"|05|"; distance:1; content:"|00|"; within:1; distance:1; byte_test:1,&,3,0,relative; content:"|00 00|"; within:2; distance:19; flowbits:isset,dce.printer.bind; classtype:attempted-recon; sid:2102349; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15448,10 +13906,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC print spool bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00 05 00 0B|"; within:17; distance:5; byte_test:1,&,16,1,relative; content:"xV4|12|4|12 CD AB EF 00 01 23|Eg|89 AB|"; within:16; distance:29; flowbits:set,dce.printer.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2102348; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102348
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC print spool bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00 05 00 0B|"; within:17; distance:5; byte_test:1,&,16,1,relative; content:"xV4|12|4|12 CD AB EF 00 01 23|Eg|89 AB|"; within:16; distance:29; flowbits:set,dce.printer.bind; flowbits:noalert; classtype:protocol-command-decode; sid:2102348; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15489,10 +13943,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert udp $EXTERNAL_NET any -> $HOME_NET 1024: (msg:"GPL NETBIOS DCERPC Workstation Service direct service access attempt"; content:"|04 00|"; depth:2; byte_test:1,&,16,2,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:22; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102316; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102316
 `alert udp $EXTERNAL_NET any -> $HOME_NET 1024: (msg:"GPL NETBIOS DCERPC Workstation Service direct service access attempt"; content:"|04 00|"; depth:2; byte_test:1,&,16,2,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:22; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102316; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15532,10 +13982,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 1024: (msg:"GPL NETBIOS DCERPC Workstation Service direct service bind attempt"; flow:to_server,established; content:"|05 00 0B|"; depth:3; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102315; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102315
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 1024: (msg:"GPL NETBIOS DCERPC Workstation Service direct service bind attempt"; flow:to_server,established; content:"|05 00 0B|"; depth:3; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102315; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15573,10 +14019,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Workstation Service bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102311; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102311
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Workstation Service bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102311; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15616,10 +14058,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Workstation Service unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102310; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102310
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Workstation Service unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102310; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15657,10 +14095,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC Workstation Service bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102309; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102309
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC Workstation Service bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102309; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15700,10 +14134,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC Workstation Service unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102308; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102308
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC Workstation Service unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"|98 D0 FF|k|12 A1 10|6|98|3F|C3 F8|~4Z"; within:16; distance:29; reference:bugtraq,9011; reference:cve,2003-0812; reference:url,www.microsoft.com/technet/security/bulletin/MS03-049.mspx; classtype:misc-attack; sid:2102308; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15741,10 +14171,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Messenger Service buffer overflow attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|04 00|"; within:2; byte_test:1,>,15,2,relative; byte_jump:4,86,little,align,relative; byte_jump:4,8,little,align,relative; byte_test:4,>,1024,0,little,relative; reference:bugtraq,8826; reference:cve,2003-0717; reference:nessus,11888; reference:nessus,11890; reference:url,www.microsoft.com/technet/security/bulletin/MS03-043.mspx; classtype:attempted-admin; sid:2102258; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102258
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Messenger Service buffer overflow attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|04 00|"; within:2; byte_test:1,>,15,2,relative; byte_jump:4,86,little,align,relative; byte_jump:4,8,little,align,relative; byte_test:4,>,1024,0,little,relative; reference:bugtraq,8826; reference:cve,2003-0717; reference:nessus,11888; reference:nessus,11890; reference:url,www.microsoft.com/technet/security/bulletin/MS03-043.mspx; classtype:attempted-admin; sid:2102258; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15784,10 +14210,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert udp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC Messenger Service buffer overflow attempt"; content:"|04 00|"; depth:2; byte_test:1,>,15,2,relative; byte_jump:4,86,little,align,relative; byte_jump:4,8,little,align,relative; byte_test:4,>,1024,0,little,relative; reference:bugtraq,8826; reference:cve,2003-0717; reference:nessus,11888; reference:nessus,11890; reference:url,www.microsoft.com/technet/security/bulletin/MS03-043.mspx; classtype:attempted-admin; sid:2102257; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102257
 `alert udp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC Messenger Service buffer overflow attempt"; content:"|04 00|"; depth:2; byte_test:1,>,15,2,relative; byte_jump:4,86,little,align,relative; byte_jump:4,8,little,align,relative; byte_test:4,>,1024,0,little,relative; reference:bugtraq,8826; reference:cve,2003-0717; reference:nessus,11888; reference:nessus,11890; reference:url,www.microsoft.com/technet/security/bulletin/MS03-043.mspx; classtype:attempted-admin; sid:2102257; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15825,10 +14247,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Remote Activation bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; tag:session,5,packets; reference:bugtraq,8234; reference:bugtraq,8458; reference:cve,2003-0528; reference:cve,2003-0605; reference:cve,2003-0715; reference:nessus,11798; reference:nessus,11835; reference:url,www.microsoft.com/technet/security/bulletin/MS03-039.mspx; classtype:attempted-admin; sid:2102252; rev:15; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102252
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC Remote Activation bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; tag:session,5,packets; reference:bugtraq,8234; reference:bugtraq,8458; reference:cve,2003-0528; reference:cve,2003-0605; reference:cve,2003-0715; reference:nessus,11798; reference:nessus,11835; reference:url,www.microsoft.com/technet/security/bulletin/MS03-039.mspx; classtype:attempted-admin; sid:2102252; rev:15; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15868,10 +14286,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC Remote Activation bind attempt"; flow:to_server,established; content:"|05|"; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; tag:session,5,packets; reference:bugtraq,8234; reference:bugtraq,8458; reference:cve,2003-0528; reference:cve,2003-0605; reference:cve,2003-0715; reference:nessus,11798; reference:nessus,11835; reference:url,www.microsoft.com/technet/security/bulletin/MS03-039.mspx; classtype:attempted-admin; sid:2102251; rev:16; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102251
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC Remote Activation bind attempt"; flow:to_server,established; content:"|05|"; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|B8|J|9F|M|1C|}|CF 11 86 1E 00| |AF|n|7C|W"; within:16; distance:29; tag:session,5,packets; reference:bugtraq,8234; reference:bugtraq,8458; reference:cve,2003-0528; reference:cve,2003-0605; reference:cve,2003-0715; reference:nessus,11798; reference:nessus,11835; reference:url,www.microsoft.com/technet/security/bulletin/MS03-039.mspx; classtype:attempted-admin; sid:2102251; rev:16; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15909,10 +14323,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC ISystemActivator bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind.call.attempt; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2102193; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102193
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC ISystemActivator bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind.call.attempt; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2102193; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -15952,10 +14362,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC ISystemActivator bind attempt"; flow:to_server,established; content:"|05|"; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind.attempt; flowbits:noalert; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2102192; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102192
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC ISystemActivator bind attempt"; flow:to_server,established; content:"|05|"; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind.attempt; flowbits:noalert; reference:bugtraq,8205; reference:cve,2003-0352; reference:nessus,11808; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:protocol-command-decode; sid:2102192; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -15993,10 +14399,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB DCERPC invalid bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:2; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|00|"; within:1; distance:21; classtype:attempted-dos; sid:2102191; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102191
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB DCERPC invalid bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:2; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|00|"; within:1; distance:21; classtype:attempted-dos; sid:2102191; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16036,10 +14438,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC invalid bind attempt"; flow:to_server,established; content:"|05|"; depth:1; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|00|"; within:1; distance:21; classtype:attempted-dos; sid:2102190; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102190
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC invalid bind attempt"; flow:to_server,established; content:"|05|"; depth:1; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|00|"; within:1; distance:21; classtype:attempted-dos; sid:2102190; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16077,10 +14475,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB startup folder unicode access"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB2"; depth:5; offset:4; content:"|5C 00|S|00|t|00|a|00|r|00|t|00| |00|M|00|e|00|n|00|u|00 5C 00|P|00|r|00|o|00|g|00|r|00|a|00|m|00|s|00 5C 00|S|00|t|00|a|00|r|00|t|00|u|00|p"; distance:0; nocase; classtype:attempted-recon; sid:2102177; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102177
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB startup folder unicode access"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB2"; depth:5; offset:4; content:"|5C 00|S|00|t|00|a|00|r|00|t|00| |00|M|00|e|00|n|00|u|00 5C 00|P|00|r|00|o|00|g|00|r|00|a|00|m|00|s|00 5C 00|S|00|t|00|a|00|r|00|t|00|u|00|p"; distance:0; nocase; classtype:attempted-recon; sid:2102177; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16120,10 +14514,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB startup folder access"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB2"; depth:5; offset:4; content:"Documents and Settings|5C|All Users|5C|Start Menu|5C|Programs|5C|Startup|00|"; distance:0; nocase; classtype:attempted-recon; sid:2102176; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102176
 `alert tcp any any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB startup folder access"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB2"; depth:5; offset:4; content:"Documents and Settings|5C|All Users|5C|Start Menu|5C|Programs|5C|Startup|00|"; distance:0; nocase; classtype:attempted-recon; sid:2102176; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16161,10 +14551,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB trans2open buffer overflow attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB2"; depth:5; offset:4; content:"|00 14|"; depth:2; offset:60; byte_test:2,>,256,0,relative,little; reference:bugtraq,7294; reference:cve,2003-0201; reference:url,www.digitaldefense.net/labs/advisories/DDI-1013.txt; classtype:attempted-admin; sid:2102103; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102103
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB trans2open buffer overflow attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB2"; depth:5; offset:4; content:"|00 14|"; depth:2; offset:60; byte_test:2,>,256,0,relative,little; reference:bugtraq,7294; reference:cve,2003-0201; reference:url,www.digitaldefense.net/labs/advisories/DDI-1013.txt; classtype:attempted-admin; sid:2102103; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16204,10 +14590,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB SMB_COM_TRANSACTION Max Data Count of 0 DOS Attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; content:"|00 00|"; depth:2; offset:45; reference:bugtraq,5556; reference:cve,2002-0724; reference:url,www.corest.com/common/showdoc.php?idx=262; reference:url,www.microsoft.com/technet/security/bulletin/MS02-045.mspx; reference:nessus,11110; classtype:denial-of-service; sid:2102102; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102102
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB SMB_COM_TRANSACTION Max Data Count of 0 DOS Attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; content:"|00 00|"; depth:2; offset:45; reference:bugtraq,5556; reference:cve,2002-0724; reference:url,www.corest.com/common/showdoc.php?idx=262; reference:url,www.microsoft.com/technet/security/bulletin/MS02-045.mspx; reference:nessus,11110; classtype:denial-of-service; sid:2102102; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16245,10 +14627,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB SMB_COM_TRANSACTION Max Parameter and Max Count of 0 DOS Attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; content:"|00 00 00 00|"; depth:4; offset:43; reference:bugtraq,5556; reference:cve,2002-0724; reference:nessus,11110; reference:url,www.corest.com/common/showdoc.php?idx=262; reference:url,www.microsoft.com/technet/security/bulletin/MS02-045.mspx; classtype:denial-of-service; sid:2102101; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102101
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB SMB_COM_TRANSACTION Max Parameter and Max Count of 0 DOS Attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; content:"|00 00 00 00|"; depth:4; offset:43; reference:bugtraq,5556; reference:cve,2002-0724; reference:nessus,11110; reference:url,www.corest.com/common/showdoc.php?idx=262; reference:url,www.microsoft.com/technet/security/bulletin/MS02-045.mspx; classtype:denial-of-service; sid:2102101; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16288,10 +14666,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC LSASS bind attempt"; flow:to_server,established; content:"|05|"; depth:1; content:"|00|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102507; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102507
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC LSASS bind attempt"; flow:to_server,established; content:"|05|"; depth:1; content:"|00|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102507; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16329,10 +14703,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC LSASS DsRolerUpgradeDownlevelServer Exploit attempt"; flow:to_server,established; content:"|05|"; content:"|00|"; within:1; distance:1; content:"|09 00|"; within:2; distance:19; flowbits:isset,netbios.lsass.bind.attempt; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:attempted-admin; sid:2102508; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102508
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC LSASS DsRolerUpgradeDownlevelServer Exploit attempt"; flow:to_server,established; content:"|05|"; content:"|00|"; within:1; distance:1; content:"|09 00|"; within:2; distance:19; flowbits:isset,netbios.lsass.bind.attempt; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:attempted-admin; sid:2102508; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16372,10 +14742,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102509; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102509
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102509; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16413,10 +14779,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102510; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102510
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,^,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C|PIPE|5C 00 05 00 0B|"; within:10; distance:4; byte_test:1,&,16,1,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102510; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16456,10 +14818,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS DsRolerUpgradeDownlevelServer exploit attempt"; flow:to_server,established; flowbits:isset,netbios.lsass.bind.attempt; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; distance:59; content:"|00|"; within:1; distance:1; content:"|09 00|"; within:2; distance:19; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:attempted-admin; sid:2102511; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102511
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS DsRolerUpgradeDownlevelServer exploit attempt"; flow:to_server,established; flowbits:isset,netbios.lsass.bind.attempt; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; distance:59; content:"|00|"; within:1; distance:1; content:"|09 00|"; within:2; distance:19; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:attempted-admin; sid:2102511; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16497,10 +14855,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:2; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102512; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102512
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS bind attempt"; flow:to_server,established; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00|"; within:12; distance:5; nocase; content:"|05|"; within:1; distance:2; content:"|0B|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102512; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16540,10 +14894,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102513; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102513
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102513; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16581,10 +14931,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS DsRolerUpgradeDownlevelServer exploit attempt"; flow:to_server,established; flowbits:isset,netbios.lsass.bind.attempt; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; distance:59; content:"|00|"; within:1; distance:1; content:"|09 00|"; within:2; distance:19; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:attempted-admin; sid:2102514; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102514
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS DsRolerUpgradeDownlevelServer exploit attempt"; flow:to_server,established; flowbits:isset,netbios.lsass.bind.attempt; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; distance:59; content:"|00|"; within:1; distance:1; content:"|09 00|"; within:2; distance:19; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:attempted-admin; sid:2102514; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16624,10 +14970,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC LSASS direct bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; content:"|0B|"; within:1; distance:1; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102524; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102524
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 135 (msg:"GPL NETBIOS DCERPC LSASS direct bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; content:"|0B|"; within:1; distance:1; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102524; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16665,10 +15007,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS direct bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; content:"|0B|"; within:1; distance:1; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102525; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102525
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB DCERPC LSASS direct bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; content:"|0B|"; within:1; distance:1; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102525; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16708,10 +15046,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS direct bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; content:"|0B|"; within:1; distance:1; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102526; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102526
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC LSASS direct bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB"; depth:4; offset:4; nocase; content:"|05|"; content:"|0B|"; within:1; distance:1; content:"j|28 19|9|0C B1 D0 11 9B A8 00 C0|O|D9|.|F5|"; within:16; distance:29; flowbits:set,netbios.lsass.bind.attempt; flowbits:noalert; reference:bugtraq,10108; reference:cve,2003-0533; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102526; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16749,10 +15083,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert udp $EXTERNAL_NET 137 -> $HOME_NET any (msg:"GPL NETBIOS NS lookup response name overflow attempt"; byte_test:1,>,127,2; content:"|00 01|"; depth:2; offset:6; byte_test:1,>,32,12; metadata: former_category NETBIOS; reference:bugtraq,10333; reference:bugtraq,10334; reference:cve,2004-0444; reference:cve,2004-0445; reference:url,www.eeye.com/html/Research/Advisories/AD20040512A.html; classtype:attempted-admin; sid:2102563; rev:6; metadata:created_at 2010_09_23, updated_at 2017_08_24;)
 
 # 2102563
 `#alert udp $EXTERNAL_NET 137 -> $HOME_NET any (msg:"GPL NETBIOS NS lookup response name overflow attempt"; byte_test:1,>,127,2; content:"|00 01|"; depth:2; offset:6; byte_test:1,>,32,12; metadata: former_category NETBIOS; reference:bugtraq,10333; reference:bugtraq,10334; reference:cve,2004-0444; reference:cve,2004-0445; reference:url,www.eeye.com/html/Research/Advisories/AD20040512A.html; classtype:attempted-admin; sid:2102563; rev:6; metadata:created_at 2010_09_23, updated_at 2017_08_24;)
@@ -16792,10 +15122,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $HOME_NET 139 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 response overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; flowbits:unset,smb.trans2; byte_test:2,>,15,34,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103143; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103143
 `#alert tcp $HOME_NET 139 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 response overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; flowbits:unset,smb.trans2; byte_test:2,>,15,34,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103143; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16833,10 +15159,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $HOME_NET 139 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 response andx overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; flowbits:unset,smb.trans2; byte_test:2,>,15,7,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103144; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103144
 `#alert tcp $HOME_NET 139 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 response andx overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; flowbits:unset,smb.trans2; byte_test:2,>,15,7,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103144; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16876,10 +15198,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 response overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; flowbits:unset,smb.trans2; byte_test:2,>,15,34,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103145; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103145
 `#alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 response overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; flowbits:unset,smb.trans2; byte_test:2,>,15,34,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103145; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -16917,10 +15235,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 response andx overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; flowbits:unset,smb.trans2; byte_test:2,>,15,7,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103146; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103146
 `#alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 response andx overflow attempt"; flow:established,to_client; flowbits:isset,smb.trans2; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; flowbits:unset,smb.trans2; byte_test:2,>,15,7,relative,little; reference:cve,2005-0045; reference:url,www.microsoft.com/technet/security/Bulletin/MS05-011.mspx; classtype:protocol-command-decode; sid:2103146; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -16960,10 +15274,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 QUERY_FILE_INFO attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|07 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103135; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103135
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 QUERY_FILE_INFO attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|07 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103135; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17001,10 +15311,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 QUERY_FILE_INFO andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|07 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103136; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103136
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 QUERY_FILE_INFO andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|07 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103136; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17044,10 +15350,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 QUERY_FILE_INFO attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|07 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103137; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103137
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 QUERY_FILE_INFO attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|07 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103137; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17085,10 +15387,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 QUERY_FILE_INFO andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|07 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103138; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103138
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 QUERY_FILE_INFO andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|07 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103138; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17128,10 +15426,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|01 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103139; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103139
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|01 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103139; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17169,10 +15463,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103140; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103140
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Trans2 FIND_FIRST2 andx attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; content:"2"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:29; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103140; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17212,10 +15502,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|01 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103141; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103141
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Trans2 FIND_FIRST2 attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB2"; within:5; distance:3; content:"|01 00|"; within:2; distance:56; flowbits:set,smb.trans2; flowbits:noalert; classtype:protocol-command-decode; sid:2103141; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17253,10 +15539,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS x86 Linux samba overflow"; flow:to_server,established; content:"|EB|/_|EB|J^|89 FB 89|>|89 F2|"; reference:bugtraq,1816; reference:bugtraq,536; reference:cve,1999-0182; reference:cve,1999-0811; classtype:attempted-admin; sid:2100292; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100292
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS x86 Linux samba overflow"; flow:to_server,established; content:"|EB|/_|EB|J^|89 FB 89|>|89 F2|"; reference:bugtraq,1816; reference:bugtraq,536; reference:cve,1999-0182; reference:cve,1999-0811; classtype:attempted-admin; sid:2100292; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17296,10 +15578,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $SQL_SERVERS 1433 (msg:"GPL NETBIOS xp_reg* - registry access"; flow:to_server,established; content:"x|00|p|00|_|00|r|00|e|00|g|00|"; nocase; reference:bugtraq,5205; reference:cve,2002-0642; reference:nessus,10642; reference:url,www.microsoft.com/technet/security/bulletin/MS02-034; classtype:attempted-user; sid:2100686; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100686
 `alert tcp $EXTERNAL_NET any -> $SQL_SERVERS 1433 (msg:"GPL NETBIOS xp_reg* - registry access"; flow:to_server,established; content:"x|00|p|00|_|00|r|00|e|00|g|00|"; nocase; reference:bugtraq,5205; reference:cve,2002-0642; reference:nessus,10642; reference:url,www.microsoft.com/technet/security/bulletin/MS02-034; classtype:attempted-user; sid:2100686; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17337,10 +15615,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $SQL_SERVERS 139 (msg:"GPL NETBIOS xp_reg* registry access"; flow:to_server,established; content:"x|00|p|00|_|00|r|00|e|00|g|00|"; depth:32; offset:32; nocase; reference:bugtraq,5205; reference:cve,2002-0642; reference:nessus,10642; reference:url,www.microsoft.com/technet/security/bulletin/MS02-034; classtype:attempted-user; sid:2100689; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100689
 `alert tcp $EXTERNAL_NET any -> $SQL_SERVERS 139 (msg:"GPL NETBIOS xp_reg* registry access"; flow:to_server,established; content:"x|00|p|00|_|00|r|00|e|00|g|00|"; depth:32; offset:32; nocase; reference:bugtraq,5205; reference:cve,2002-0642; reference:nessus,10642; reference:url,www.microsoft.com/technet/security/bulletin/MS02-034; classtype:attempted-user; sid:2100689; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17380,10 +15654,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103183; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103183
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB CoGetInstanceFromFile unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.msqueue; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-17,relative,from_beginning,little; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|01 00|"; within:2; distance:19; byte_test:4,>,256,20,relative; reference:cve,2003-0995; reference:url,www.eeye.com/html/Research/Advisories/AD20030910.html; reference:url,www.microsoft.com/technet/security/bulletin/MS03-026.mspx; classtype:attempted-admin; sid:2103183; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17421,10 +15691,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; isdataat:4,relative; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103021; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103021
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE unicode andx oversized Security Descriptor attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-15,little,relative,from_beginning; isdataat:4,relative; byte_test:4,>,1024,40,relative,little; reference:cve,2004-1154; classtype:protocol-command-decode; sid:2103021; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17464,10 +15730,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; within:1; distance:4; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102999; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102999
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; within:1; distance:4; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102999; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17505,10 +15767,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102998; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102998
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102998; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17548,10 +15806,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102997; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102997
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102997; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17589,10 +15843,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102996; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102996
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS InitiateSystemShutdown andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102996; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17632,10 +15882,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102995; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102995
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102995; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17673,10 +15919,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102994; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102994
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown unicode andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102994; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17716,10 +15958,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102993; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102993
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown little endian andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|18 00|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102993; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17757,10 +15995,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102992; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102992
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB InitiateSystemShutdown andx attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 18|"; within:2; distance:19; classtype:protocol-command-decode; sid:2102992; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17800,10 +16034,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102991; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102991
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; content:"|05|"; distance:4; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102991; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17841,10 +16071,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102964; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102964
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102964; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17884,10 +16110,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102965; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102965
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102965; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -17925,10 +16147,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102966; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102966
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102966; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -17968,10 +16186,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102967; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102967
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NDdeSetTrustedShareW unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102967; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18009,10 +16223,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NTLMSSP invalid mechlistMIC attempt"; flow:to_server,established; content:"|FF|SMBs"; depth:5; offset:4; nocase; content:"`"; depth:1; offset:63; content:"|00 00 00|b|06 83 00 00 06|+|06 01 05 05 02|"; within:15; distance:1; content:"|06 0A|+|06 01 04 01 82|7|02 02 0A|"; distance:0; content:"|A3|>0<|A0|0"; distance:0; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12054; reference:nessus,12065; classtype:attempted-dos; sid:2102384; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102384
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NTLMSSP invalid mechlistMIC attempt"; flow:to_server,established; content:"|FF|SMBs"; depth:5; offset:4; nocase; content:"`"; depth:1; offset:63; content:"|00 00 00|b|06 83 00 00 06|+|06 01 05 05 02|"; within:15; distance:1; content:"|06 0A|+|06 01 04 01 82|7|02 02 0A|"; distance:0; content:"|A3|>0<|A0|0"; distance:0; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12054; reference:nessus,12065; classtype:attempted-dos; sid:2102384; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18052,10 +16262,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup AndX request username overflow attempt"; flow:to_server,established; content:"|00|"; depth:1; byte_test:2,>,322,2; content:"|FF|SMBs"; depth:5; offset:4; nocase; byte_test:1,<,128,6,relative; content:"|00 00 00 00|"; within:4; distance:42; byte_test:2,>,255,8,relative,little; content:!"|00|"; within:255; distance:10; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:attempted-admin; sid:2102401; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102401
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup AndX request username overflow attempt"; flow:to_server,established; content:"|00|"; depth:1; byte_test:2,>,322,2; content:"|FF|SMBs"; depth:5; offset:4; nocase; byte_test:1,<,128,6,relative; content:"|00 00 00 00|"; within:4; distance:42; byte_test:2,>,255,8,relative,little; content:!"|00|"; within:255; distance:10; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:attempted-admin; sid:2102401; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18093,10 +16299,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102960; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102960
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102960; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18136,10 +16338,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|nddeapi|00|"; within:9; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102956; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102956
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|nddeapi|00|"; within:9; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102956; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18177,10 +16375,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102961; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102961
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102961; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18220,10 +16414,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102957; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102957
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB nddeapi unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102957; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18261,10 +16451,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102988; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102988
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102988; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18304,10 +16490,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|winreg|00|"; within:8; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102984; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102984
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|winreg|00|"; within:8; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102984; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18345,10 +16527,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102989; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102989
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102989; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18388,10 +16566,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102985; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102985
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB winreg unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102985; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18429,10 +16603,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"ADMIN|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102982; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102982
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"ADMIN|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102982; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18472,10 +16642,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"A|00|D|00|M|00|I|00|N|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102983; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102983
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS ADMIN$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"A|00|D|00|M|00|I|00|N|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102983; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18513,10 +16679,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"C|24 00|"; distance:2; nocase; content:!"IPC|24 00|"; within:5; distance:-5; nocase; classtype:protocol-command-decode; sid:2102978; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102978
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"C|24 00|"; distance:2; nocase; content:!"IPC|24 00|"; within:5; distance:-5; nocase; classtype:protocol-command-decode; sid:2102978; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18556,10 +16718,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"C|00 24 00 00 00|"; distance:2; nocase; content:!"I|00|P|00|C|00 24 00 00 00|"; within:10; distance:-10; nocase; classtype:protocol-command-decode; sid:2102979; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102979
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS C$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"C|00 24 00 00 00|"; distance:2; nocase; content:!"I|00|P|00|C|00 24 00 00 00|"; within:10; distance:-10; nocase; classtype:protocol-command-decode; sid:2102979; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18597,10 +16755,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"D|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102974; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102974
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"D|24 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102974; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18640,10 +16794,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"D|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102975; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102975
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS D$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"D|00 24 00 00 00|"; distance:2; nocase; classtype:protocol-command-decode; sid:2102975; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18681,10 +16831,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCEPRC ORPCThis request flood attempt"; flow:to_server,established; content:"|05|"; depth:1; content:"|00|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|05|"; within:1; distance:21; content:"MEOW"; flowbits:isset,dce.isystemactivator.bind.call.attempt; threshold:type both, track by_dst, count 20, seconds 60; reference:bugtraq,8811; reference:cve,2003-0813; reference:nessus,12206; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:misc-attack; sid:2102496; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102496
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCEPRC ORPCThis request flood attempt"; flow:to_server,established; content:"|05|"; depth:1; content:"|00|"; within:1; distance:1; byte_test:1,&,1,0,relative; content:"|05|"; within:1; distance:21; content:"MEOW"; flowbits:isset,dce.isystemactivator.bind.call.attempt; threshold:type both, track by_dst, count 20, seconds 60; reference:bugtraq,8811; reference:cve,2003-0813; reference:nessus,12206; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:misc-attack; sid:2102496; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18724,10 +16870,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC ISystemActivator unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind.call.attempt; reference:bugtraq,8811; reference:cve,2003-0813; reference:nessus,12206; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102491; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102491
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC ISystemActivator unicode bind attempt"; flow:to_server,established; content:"|00|"; depth:1; content:"|FF|SMB%"; depth:5; offset:4; nocase; byte_test:2,&,1,5,relative; content:"&|00|"; within:2; distance:56; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 05 00 0B|"; within:15; distance:4; byte_test:1,&,16,1,relative; content:"|A0 01 00 00 00 00 00 00 C0 00 00 00 00 00 00|F"; within:16; distance:29; flowbits:set,dce.isystemactivator.bind.call.attempt; reference:bugtraq,8811; reference:cve,2003-0813; reference:nessus,12206; reference:url,www.microsoft.com/technet/security/bulletin/MS04-011.mspx; classtype:protocol-command-decode; sid:2102491; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18765,10 +16907,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC NTLMSSP invalid mechlistMIC attempt"; flow:to_server,established; content:"|FF|SMBs"; depth:5; offset:4; nocase; content:"`"; depth:1; offset:63; content:"|00 00 00|b|06 83 00 00 06|+|06 01 05 05 02|"; within:15; distance:1; content:"|06 0A|+|06 01 04 01 82|7|02 02 0A|"; distance:0; content:"|A3|>0<|A0|0"; distance:0; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12054; reference:nessus,12065; classtype:attempted-dos; sid:2102385; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102385
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS DCERPC NTLMSSP invalid mechlistMIC attempt"; flow:to_server,established; content:"|FF|SMBs"; depth:5; offset:4; nocase; content:"`"; depth:1; offset:63; content:"|00 00 00|b|06 83 00 00 06|+|06 01 05 05 02|"; within:15; distance:1; content:"|06 0A|+|06 01 04 01 82|7|02 02 0A|"; distance:0; content:"|A3|>0<|A0|0"; distance:0; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12054; reference:nessus,12065; classtype:attempted-dos; sid:2102385; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18808,10 +16946,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"IPC|24 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102954; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102954
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"IPC|24 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102954; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18849,10 +16983,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"I|00|P|00|C|00 24 00 00 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102955; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102955
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS IPC$ unicode andx share access"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"u"; depth:1; offset:39; byte_jump:2,0,little,relative; byte_jump:2,7,little,relative; content:"I|00|P|00|C|00 24 00 00 00|"; distance:2; nocase; flowbits:set,smb.tree.connect.ipc; classtype:protocol-command-decode; sid:2102955; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18892,10 +17022,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102968; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102968
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102968; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -18933,10 +17059,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102969; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102969
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:256,relative; content:!"|00|"; within:256; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102969; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -18976,10 +17098,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102970; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102970
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|00 0C|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102970; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19017,10 +17135,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102971; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102971
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS NDdeSetTrustedShareW unicode little endian andx overflow attempt"; flow:established,to_server; flowbits:isset,smb.tree.bind.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; byte_test:1,!&,16,3,relative; content:"|00|"; within:1; distance:1; content:"|0C 00|"; within:2; distance:19; isdataat:512,relative; content:!"|00 00|"; within:512; distance:12; reference:bugtraq,11372; reference:cve,2004-0206; classtype:attempted-admin; sid:2102971; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19060,10 +17174,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup AndX request username overflow attempt"; flow:to_server,established; content:"|00|"; depth:1; byte_test:2,>,322,2; content:"|FF|SMBs"; depth:5; offset:4; nocase; byte_test:1,<,128,6,relative; content:"|00 00 00 00|"; within:4; distance:42; byte_test:2,>,255,8,relative,little; content:!"|00|"; within:255; distance:10; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:attempted-admin; sid:2102402; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102402
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS Session Setup AndX request username overflow attempt"; flow:to_server,established; content:"|00|"; depth:1; byte_test:2,>,322,2; content:"|FF|SMBs"; depth:5; offset:4; nocase; byte_test:1,<,128,6,relative; content:"|00 00 00 00|"; within:4; distance:42; byte_test:2,>,255,8,relative,little; content:!"|00|"; within:255; distance:10; reference:bugtraq,9752; reference:url,www.eeye.com/html/Research/Advisories/AD20040226.html; classtype:attempted-admin; sid:2102402; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19101,10 +17211,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102962; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102962
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102962; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19144,10 +17250,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|nddeapi|00|"; within:9; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102958; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102958
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|nddeapi|00|"; within:9; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102958; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19185,10 +17287,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102963; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102963
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.nddeapi; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C 00|P|00|I|00|P|00|E|00 5C 00 00 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:" 2_/&|C1|v|10 B5|I|07|M|07 86 19 DA|"; within:16; distance:29; flowbits:set,smb.tree.bind.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102963; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19228,10 +17326,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102959; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102959
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS nddeapi unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|n|00|d|00|d|00|e|00|a|00|p|00|i|00 00 00|"; within:18; distance:51; nocase; flowbits:set,smb.tree.create.nddeapi; reference:bugtraq,11372; reference:cve,2004-0206; classtype:protocol-command-decode; sid:2102959; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19269,10 +17363,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS too many stacked requests"; flow:to_server,established; content:"|FF|SMB"; pcre:"/^\x00.{3}\xFFSMB(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f).{28}(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f)/"; byte_jump:2,39,little; content:!"|FF|"; within:1; distance:-36; classtype:protocol-command-decode; sid:2102951; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102951
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS too many stacked requests"; flow:to_server,established; content:"|FF|SMB"; pcre:"/^\x00.{3}\xFFSMB(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f).{28}(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f)/"; byte_jump:2,39,little; content:!"|FF|"; within:1; distance:-36; classtype:protocol-command-decode; sid:2102951; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19312,10 +17402,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102990; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102990
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg andx bind attempt"; flow:established,to_server; flowbits:isset,smb.tree.create.winreg; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"%"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"&|00|"; within:2; distance:29; content:"|5C|PIPE|5C 00|"; distance:4; nocase; byte_jump:2,-10,relative,from_beginning; pcre:"/^.{4}/R"; content:"|05|"; within:1; content:"|0B|"; within:1; distance:1; content:"|01 D0 8C|3D|22 F1|1|AA AA 90 00|8|00 10 03|"; within:16; distance:29; flowbits:set,smb.tree.bind.winreg; classtype:protocol-command-decode; sid:2102990; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19353,10 +17439,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|winreg|00|"; within:8; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102986; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102986
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C|winreg|00|"; within:8; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102986; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19396,10 +17478,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102987; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102987
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"GPL NETBIOS SMB-DS winreg unicode andx create tree attempt"; flow:established,to_server; flowbits:isset,smb.tree.connect.ipc; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\x2e|\x24|\x74)/sR"; byte_test:1,&,128,6,relative; content:"|A2|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|5C 00|w|00|i|00|n|00|r|00|e|00|g|00 00 00|"; within:16; distance:51; nocase; flowbits:set,smb.tree.create.winreg; classtype:protocol-command-decode; sid:2102987; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19437,10 +17515,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $HOME_NET 139 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB repeated logon failure"; flow:from_server,established; content:"|FF|SMB"; depth:4; offset:4; content:"s"; within:1; content:"m|00 00 C0|"; within:4; threshold:type threshold,track by_dst,count 10,seconds 60; classtype:unsuccessful-user; sid:2102923; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102923
 `alert tcp $HOME_NET 139 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB repeated logon failure"; flow:from_server,established; content:"|FF|SMB"; depth:4; offset:4; content:"s"; within:1; content:"m|00 00 C0|"; within:4; threshold:type threshold,track by_dst,count 10,seconds 60; classtype:unsuccessful-user; sid:2102923; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19480,10 +17554,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB-DS repeated logon failure"; flow:from_server,established; content:"|FF|SMB"; depth:4; offset:4; content:"s"; within:1; content:"m|00 00 C0|"; within:4; threshold:type threshold,track by_dst,count 10,seconds 60; classtype:unsuccessful-user; sid:2102924; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102924
 `alert tcp $HOME_NET 445 -> $EXTERNAL_NET any (msg:"GPL NETBIOS SMB-DS repeated logon failure"; flow:from_server,established; content:"|FF|SMB"; depth:4; offset:4; content:"s"; within:1; content:"m|00 00 C0|"; within:4; threshold:type threshold,track by_dst,count 10,seconds 60; classtype:unsuccessful-user; sid:2102924; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19521,10 +17591,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS RFParalyze Attempt"; flow:to_server,established; content:"BEAVIS"; content:"yep yep"; reference:bugtraq,1163; reference:cve,2000-0347; reference:nessus,10392; classtype:attempted-recon; sid:2101239; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101239
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS RFParalyze Attempt"; flow:to_server,established; content:"BEAVIS"; content:"yep yep"; reference:bugtraq,1163; reference:cve,2000-0347; reference:nessus,10392; classtype:attempted-recon; sid:2101239; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19564,10 +17630,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB too many stacked requests"; flow:to_server,established; content:"|FF|SMB"; pcre:"/^\x00.{3}\xFFSMB(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f).{28}(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f)/"; byte_jump:2,39,little; content:!"|FF|"; within:1; distance:-36; classtype:protocol-command-decode; sid:2102950; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102950
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB too many stacked requests"; flow:to_server,established; content:"|FF|SMB"; pcre:"/^\x00.{3}\xFFSMB(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f).{28}(\x73|\x74|\x75|\xa2|\x24|\x2d|\x2e|\x2f)/"; byte_jump:2,39,little; content:!"|FF|"; within:1; distance:-36; classtype:protocol-command-decode; sid:2102950; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19605,10 +17667,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103043; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103043
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB NT Trans NT CREATE andx invalid SACL ace size dos attempt"; flow:stateless; content:"|00|"; depth:1; content:"|FF|SMB"; within:4; distance:3; pcre:"/^(\x75|\x2d|\x2f|\x73|\xa2|\x2e|\x24|\x74)/sR"; byte_test:1,!&,128,6,relative; content:"|A0|"; depth:1; offset:39; byte_jump:2,0,little,relative; content:"|01 00|"; within:2; distance:37; byte_jump:4,-7,little,relative,from_beginning; content:!"|00 00 00 00|"; within:4; distance:16; byte_jump:4,16,relative,little; content:"|00 00|"; within:2; distance:-10; classtype:protocol-command-decode; sid:2103043; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -19648,10 +17706,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP unicode asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_test:4,&,2147483648,48,relative,little; content:!"NTLMSSP"; within:7; distance:54; asn1:double_overflow, bitstring_overflow, relative_offset 54, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103000; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103000
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"GPL NETBIOS SMB Session Setup NTMLSSP unicode asn1 overflow attempt"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBs"; within:5; distance:3; byte_test:1,&,128,6,relative; byte_test:4,&,2147483648,48,relative,little; content:!"NTLMSSP"; within:7; distance:54; asn1:double_overflow, bitstring_overflow, relative_offset 54, oversize_length 2048; reference:bugtraq,9633; reference:bugtraq,9635; reference:cve,2003-0818; reference:nessus,12052; reference:nessus,12065; reference:url,www.microsoft.com/technet/security/bulletin/MS04-007.mspx; classtype:protocol-command-decode; sid:2103000; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -19689,10 +17743,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp any any -> any [139,445] (msg:"ET NETBIOS Tree Connect AndX Request IPC$ Unicode"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; content:"| 00 5c 00 69 00 70 00 63 00 24 00 00 00|"; nocase; flowbits:set,smb.tree.connect.ipc; flowbits:noalert;  metadata: former_category NETBIOS; reference:cve,2006-4691; classtype:protocol-command-decode; sid:2025090; rev:1; metadata:created_at 2016_06_14, updated_at 2017_11_29;)
 
 # 2025090
 `#alert tcp any any -> any [139,445] (msg:"ET NETBIOS Tree Connect AndX Request IPC$ Unicode"; flow:established,to_server; content:"|00|"; depth:1; content:"|FF|SMBu"; within:5; distance:3; content:"| 00 5c 00 69 00 70 00 63 00 24 00 00 00|"; nocase; flowbits:set,smb.tree.connect.ipc; flowbits:noalert;  metadata: former_category NETBIOS; reference:cve,2006-4691; classtype:protocol-command-decode; sid:2025090; rev:1; metadata:created_at 2016_06_14, updated_at 2017_11_29;)
@@ -19732,10 +17782,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $HOME_NET [445,139] -> any any (msg:"ET NETBIOS PolarisOffice Insecure Library Loading - SMB ASCII"; flow:from_server; content:"SMB"; offset:4; depth:5; byte_test:1,!&,0x80,7,relative; content:"puiframeworkproresenu|2E|dll"; nocase; distance:0; fast_pattern; reference:url, exploit-db.com/exploits/44985/; metadata: former_category NETBIOS; reference:cve,2018-12589; classtype:attempted-user; sid:2025790; rev:1; metadata:attack_target Client_Endpoint, deployment Perimeter, created_at 2018_07_06, updated_at 2018_07_18;)
-
 # 2025790
 `alert tcp $HOME_NET [445,139] -> any any (msg:"ET NETBIOS PolarisOffice Insecure Library Loading - SMB ASCII"; flow:from_server; content:"SMB"; offset:4; depth:5; byte_test:1,!&,0x80,7,relative; content:"puiframeworkproresenu|2E|dll"; nocase; distance:0; fast_pattern; reference:url, exploit-db.com/exploits/44985/; metadata: former_category NETBIOS; reference:cve,2018-12589; classtype:attempted-user; sid:2025790; rev:1; metadata:attack_target Client_Endpoint, deployment Perimeter, created_at 2018_07_06, updated_at 2018_07_18;)
 ` 
@@ -19773,10 +17819,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $HOME_NET [445,139] -> any any (msg:"ET NETBIOS PolarisOffice Insecure Library Loading - SMB Unicode"; flow:from_server; content:"SMB"; offset:4; depth:5; byte_test:1,&,0x80,7,relative; content:"p|00|u|00|i|00|f|00|r|00|a|00|m|00|e|00|w|00|o|00|r|00|k|00|p|00|r|00|o|00|r|00|e|00|s|00|e|00|n|00|u|00 2E 00|d|00|l|00|l|00|"; nocase; distance:0; reference:url, exploit-db.com/exploits/44985/; metadata: former_category NETBIOS; reference:cve,2018-12589; classtype:attempted-user; sid:2025791; rev:1; metadata:attack_target Client_Endpoint, deployment Perimeter, created_at 2018_07_06, updated_at 2018_07_18;)
 
 # 2025791
 `alert tcp $HOME_NET [445,139] -> any any (msg:"ET NETBIOS PolarisOffice Insecure Library Loading - SMB Unicode"; flow:from_server; content:"SMB"; offset:4; depth:5; byte_test:1,&,0x80,7,relative; content:"p|00|u|00|i|00|f|00|r|00|a|00|m|00|e|00|w|00|o|00|r|00|k|00|p|00|r|00|o|00|r|00|e|00|s|00|e|00|n|00|u|00 2E 00|d|00|l|00|l|00|"; nocase; distance:0; reference:url, exploit-db.com/exploits/44985/; metadata: former_category NETBIOS; reference:cve,2018-12589; classtype:attempted-user; sid:2025791; rev:1; metadata:attack_target Client_Endpoint, deployment Perimeter, created_at 2018_07_06, updated_at 2018_07_18;)
@@ -19816,10 +17858,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows RRAS SMB Remote Code Execution"; flow:established,to_server; content:"|21 00 00 00 10 27 00 00 a4 86 01 00 41 41 41 41 04 00 00 00 41 41 41 41 a4 86 01 00 ad 0b 2d 06 d0 ba 61 41 41 90 90 90 90 90|"; metadata: former_category NETBIOS; reference:cve,2017-11885; reference:url,exploit-db.com/exploits/44616/; classtype:attempted-user; sid:2025824; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_and_Server, deployment Perimeter, deployment Datacenter, signature_severity Major, created_at 2018_07_11, performance_impact Low, updated_at 2018_07_18;)
-
 # 2025824
 `alert tcp any any -> $HOME_NET 445 (msg:"ET NETBIOS Microsoft Windows RRAS SMB Remote Code Execution"; flow:established,to_server; content:"|21 00 00 00 10 27 00 00 a4 86 01 00 41 41 41 41 04 00 00 00 41 41 41 41 a4 86 01 00 ad 0b 2d 06 d0 ba 61 41 41 90 90 90 90 90|"; metadata: former_category NETBIOS; reference:cve,2017-11885; reference:url,exploit-db.com/exploits/44616/; classtype:attempted-user; sid:2025824; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_and_Server, deployment Perimeter, deployment Datacenter, signature_severity Major, created_at 2018_07_11, performance_impact Low, updated_at 2018_07_18;)
 ` 
@@ -19857,10 +17895,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Low
-
-
-
-#alert tcp any any -> $HOME_NET any (msg:"ET NETBIOS DCERPC WMI Remote Process Execution"; flow:to_server,established; dce_iface:00000143-0000-0000-c000-000000000046; metadata: former_category NETBIOS; classtype:bad-unknown; sid:2027167; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, deployment Internal, signature_severity Informational, created_at 2019_04_09, updated_at 2019_04_09;)
 
 # 2027167
 `#alert tcp any any -> $HOME_NET any (msg:"ET NETBIOS DCERPC WMI Remote Process Execution"; flow:to_server,established; dce_iface:00000143-0000-0000-c000-000000000046; metadata: former_category NETBIOS; classtype:bad-unknown; sid:2027167; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, deployment Internal, signature_severity Informational, created_at 2019_04_09, updated_at 2019_04_09;)
@@ -19900,10 +17934,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET any (msg:"ET NETBIOS DCERPC DCOM ExecuteShellCommand Call - Likely Lateral Movement"; flow:established,to_server; content:"|00|E|00|x|00|e|00|c|00|u|00|t|00|e|00|S|00|h|00|e|00|l|00|l|00|C|00|o|00|m|00|m|00|a|00|n|00|d|00|"; metadata: former_category NETBIOS; reference:url,enigma0x3.net/2017/01/05/lateral-movement-using-the-mmc20-application-com-object/; reference:url,enigma0x3.net/2017/01/23/lateral-movement-via-dcom-round-2/; reference:url,attack.mitre.org/techniques/T1175/; classtype:bad-unknown; sid:2027189; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, deployment Internal, signature_severity Minor, created_at 2019_04_11, updated_at 2019_04_11;)
-
 # 2027189
 `alert tcp any any -> $HOME_NET any (msg:"ET NETBIOS DCERPC DCOM ExecuteShellCommand Call - Likely Lateral Movement"; flow:established,to_server; content:"|00|E|00|x|00|e|00|c|00|u|00|t|00|e|00|S|00|h|00|e|00|l|00|l|00|C|00|o|00|m|00|m|00|a|00|n|00|d|00|"; metadata: former_category NETBIOS; reference:url,enigma0x3.net/2017/01/05/lateral-movement-using-the-mmc20-application-com-object/; reference:url,enigma0x3.net/2017/01/23/lateral-movement-via-dcom-round-2/; reference:url,attack.mitre.org/techniques/T1175/; classtype:bad-unknown; sid:2027189; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, deployment Internal, signature_severity Minor, created_at 2019_04_11, updated_at 2019_04_11;)
 ` 
@@ -19941,10 +17971,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp any any -> $HOME_NET any (msg:"ET NETBIOS DCERPC DCOM ShellExecute - Likely Lateral Movement"; flow:established,to_server; content:"|00|S|00|h|00|e|00|l|00|l|00|E|00|x|00|e|00|c|00|u|00|t|00|e|00|"; metadata: former_category NETBIOS; reference:url,enigma0x3.net/2017/01/05/lateral-movement-using-the-mmc20-application-com-object/; reference:url,enigma0x3.net/2017/01/23/lateral-movement-via-dcom-round-2/; reference:url,attack.mitre.org/techniques/T1175/; classtype:bad-unknown; sid:2027190; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, deployment Internal, signature_severity Minor, created_at 2019_04_11, updated_at 2019_04_11;)
 
 # 2027190
 `#alert tcp any any -> $HOME_NET any (msg:"ET NETBIOS DCERPC DCOM ShellExecute - Likely Lateral Movement"; flow:established,to_server; content:"|00|S|00|h|00|e|00|l|00|l|00|E|00|x|00|e|00|c|00|u|00|t|00|e|00|"; metadata: former_category NETBIOS; reference:url,enigma0x3.net/2017/01/05/lateral-movement-using-the-mmc20-application-com-object/; reference:url,enigma0x3.net/2017/01/23/lateral-movement-via-dcom-round-2/; reference:url,attack.mitre.org/techniques/T1175/; classtype:bad-unknown; sid:2027190; rev:1; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, deployment Internal, signature_severity Minor, created_at 2019_04_11, updated_at 2019_04_11;)
@@ -19984,10 +18010,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp any any -> $HOME_NET 135 (msg:"ET NETBIOS DCERPC SVCCTL - Remote Service Control Manager Access"; flow:established,to_server; content:"|00 00 00 00 00 00 00 00|"; content:"|13 00 0d 81 bb 7a 36 44 98 f1 35 ad 32 98 f0 38 00 10 03|"; distance:0; within:100; metadata: former_category RPC; classtype:attempted-user; sid:2027237; rev:2; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_and_Server, deployment Perimeter, signature_severity Major, created_at 2019_04_22, performance_impact Low, updated_at 2019_04_22;)
-
 # 2027237
 `alert tcp any any -> $HOME_NET 135 (msg:"ET NETBIOS DCERPC SVCCTL - Remote Service Control Manager Access"; flow:established,to_server; content:"|00 00 00 00 00 00 00 00|"; content:"|13 00 0d 81 bb 7a 36 44 98 f1 35 ad 32 98 f0 38 00 10 03|"; distance:0; within:100; metadata: former_category RPC; classtype:attempted-user; sid:2027237; rev:2; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_and_Server, deployment Perimeter, signature_severity Major, created_at 2019_04_22, performance_impact Low, updated_at 2019_04_22;)
 ` 
@@ -20025,6 +18047,4 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Low
-
-
 

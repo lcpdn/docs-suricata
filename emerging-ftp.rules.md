@@ -1,85 +1,3 @@
-# Emerging Threats 
-
-#
-
-# This distribution may contain rules under two different licenses. 
-
-#
-
-#  Rules with sids 1 through 3464, and 100000000 through 100000908 are under the GPLv2.
-
-#  A copy of that license is available at http://www.gnu.org/licenses/gpl-2.0.html
-
-#
-
-#  Rules with sids 2000000 through 2799999 are from Emerging Threats and are covered under the BSD License 
-
-#  as follows:
-
-#
-
-#*************************************************************
-
-#  Copyright (c) 2003-2019, Emerging Threats
-
-#  All rights reserved.
-
-#  
-
-#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
-
-#  following conditions are met:
-
-#  
-
-#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
-
-#    disclaimer.
-
-#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the 
-
-#    following disclaimer in the documentation and/or other materials provided with the distribution.
-
-#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived 
-
-#    from this software without specific prior written permission.
-
-#  
-
-#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-
-#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-
-#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-
-#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-
-#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-
-#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
-
-#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-
-#
-
-#*************************************************************
-
-#
-
-#
-
-#
-
-#
-
-
-
-# This Ruleset is EmergingThreats Open optimized for suricata-4.0-enhanced.
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP SITE command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"SITE"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010732; classtype:attempted-recon; sid:2010732; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2010732
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP SITE command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"SITE"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010732; classtype:attempted-recon; sid:2010732; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -117,10 +35,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RMDIR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RMDIR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010733; classtype:attempted-recon; sid:2010733; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2010733
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RMDIR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RMDIR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010733; classtype:attempted-recon; sid:2010733; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -160,10 +74,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP MKDIR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"MKDIR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010734; classtype:attempted-recon; sid:2010734; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2010734
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP MKDIR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"MKDIR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010734; classtype:attempted-recon; sid:2010734; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -201,10 +111,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP PWD command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"PWD"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010735; classtype:attempted-recon; sid:2010735; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2010735
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP PWD command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"PWD"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010735; classtype:attempted-recon; sid:2010735; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -244,10 +150,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RETR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RETR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010736; classtype:attempted-recon; sid:2010736; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2010736
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RETR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RETR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010736; classtype:attempted-recon; sid:2010736; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -285,10 +187,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP NLST command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"NLST"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010737; classtype:attempted-recon; sid:2010737; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2010737
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP NLST command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"NLST"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010737; classtype:attempted-recon; sid:2010737; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -328,10 +226,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RNTO command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RNTO"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010738; classtype:attempted-recon; sid:2010738; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2010738
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RNTO command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RNTO"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010738; classtype:attempted-recon; sid:2010738; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -369,10 +263,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RNFR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RNFR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010739; classtype:attempted-recon; sid:2010739; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2010739
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP RNFR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"RNFR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010739; classtype:attempted-recon; sid:2010739; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -412,10 +302,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP STOR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"STOR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010740; classtype:attempted-recon; sid:2010740; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2010740
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP STOR command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"STOR"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010740; classtype:attempted-recon; sid:2010740; rev:2; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -454,10 +340,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP HP-UX LIST command without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:"LIST "; nocase; depth:5; reference:cve,2005-3296; reference:bugtraq,15138; reference:url,doc.emergingthreats.net/bin/view/Main/2002851; classtype:attempted-recon; sid:2002851; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2002851
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP HP-UX LIST command without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:"LIST "; nocase; depth:5; reference:cve,2005-3296; reference:bugtraq,15138; reference:url,doc.emergingthreats.net/bin/view/Main/2002851; classtype:attempted-recon; sid:2002851; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -495,10 +377,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username SELECT FROM SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"SELECT"; within:200; nocase; content:"FROM"; distance:0; nocase; pcre:"/SELECT.+FROM/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009981; classtype:attempted-user; sid:2009981; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
 
 # 2009981
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username SELECT FROM SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"SELECT"; within:200; nocase; content:"FROM"; distance:0; nocase; pcre:"/SELECT.+FROM/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009981; classtype:attempted-user; sid:2009981; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
@@ -547,10 +425,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username DELETE FROM SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"DELETE"; within:200; nocase; content:"FROM"; distance:0; nocase; pcre:"/DELETE.+FROM/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009982; classtype:attempted-user; sid:2009982; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
-
 # 2009982
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username DELETE FROM SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"DELETE"; within:200; nocase; content:"FROM"; distance:0; nocase; pcre:"/DELETE.+FROM/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009982; classtype:attempted-user; sid:2009982; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
 ` 
@@ -597,10 +471,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username INSERT INTO SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"INSERT"; within:200; nocase; content:"INTO"; distance:0; nocase; pcre:"/INSERT.+INTO/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009983; classtype:attempted-user; sid:2009983; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
 
 # 2009983
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username INSERT INTO SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"INSERT"; within:200; nocase; content:"INTO"; distance:0; nocase; pcre:"/INSERT.+INTO/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009983; classtype:attempted-user; sid:2009983; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
@@ -649,10 +519,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username UPDATE SET SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"UPDATE"; within:200; nocase; content:"SET"; distance:0; nocase; pcre:"/UPDATE.+SET/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009984; classtype:attempted-user; sid:2009984; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
-
 # 2009984
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username UPDATE SET SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"UPDATE"; within:200; nocase; content:"SET"; distance:0; nocase; pcre:"/UPDATE.+SET/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009984; classtype:attempted-user; sid:2009984; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
 ` 
@@ -699,10 +565,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username UNION SELECT SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"UNION"; within:200; nocase; content:"SELECT"; distance:0; nocase; pcre:"/UNION.+SELECT/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009985; classtype:attempted-user; sid:2009985; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
 
 # 2009985
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username UNION SELECT SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"UNION"; within:200; nocase; content:"SELECT"; distance:0; nocase; pcre:"/UNION.+SELECT/i"; reference:url,en.wikipedia.org/wiki/SQL_injection; reference:url,doc.emergingthreats.net/2009985; classtype:attempted-user; sid:2009985; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
@@ -751,10 +613,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username INTO OUTFILE SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"INTO"; within:200; nocase; content:"OUTFILE"; distance:0; nocase; pcre:"/INTO.+OUTFILE/i"; reference:url,www.milw0rm.com/papers/372; reference:url,www.greensql.net/publications/backdoor-webserver-using-mysql-sql-injection; reference:url,websec.wordpress.com/2007/11/17/mysql-into-outfile/; reference:url,doc.emergingthreats.net/2010081; classtype:attempted-user; sid:2010081; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
-
 # 2010081
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Possible FTP Daemon Username INTO OUTFILE SQL Injection Attempt"; flow:established,to_server; content:"USER"; depth:4; content:"INTO"; within:200; nocase; content:"OUTFILE"; distance:0; nocase; pcre:"/INTO.+OUTFILE/i"; reference:url,www.milw0rm.com/papers/372; reference:url,www.greensql.net/publications/backdoor-webserver-using-mysql-sql-injection; reference:url,websec.wordpress.com/2007/11/17/mysql-into-outfile/; reference:url,doc.emergingthreats.net/2010081; classtype:attempted-user; sid:2010081; rev:2; metadata:affected_product Web_Server_Applications, attack_target Web_Server, deployment Datacenter, tag SQL_Injection, signature_severity Major, created_at 2010_07_30, updated_at 2016_07_01;)
 ` 
@@ -802,10 +660,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP LIST directory traversal attempt"; flow:to_server,established; content:"LIST"; nocase; content:".."; distance:1; content:".."; distance:1; reference:bugtraq,2618; reference:cve,2001-0680; reference:cve,2002-1054; reference:nessus,11112; classtype:protocol-command-decode; sid:2101992; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101992
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP LIST directory traversal attempt"; flow:to_server,established; content:"LIST"; nocase; content:".."; distance:1; content:".."; distance:1; reference:bugtraq,2618; reference:cve,2001-0680; reference:cve,2002-1054; reference:nessus,11112; classtype:protocol-command-decode; sid:2101992; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -843,10 +697,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE EXEC format string attempt"; flow:to_server,established; content:"SITE"; nocase; content:"EXEC"; distance:0; nocase; pcre:"/^SITE\s+EXEC\s[^\n]*?%[^\n]*?%/smi"; classtype:bad-unknown; sid:2101971; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101971
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE EXEC format string attempt"; flow:to_server,established; content:"SITE"; nocase; content:"EXEC"; distance:0; nocase; pcre:"/^SITE\s+EXEC\s[^\n]*?%[^\n]*?%/smi"; classtype:bad-unknown; sid:2101971; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -886,10 +736,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP PASS overflow attempt"; flow:to_server,established,no_stream; content:"PASS"; nocase; isdataat:100,relative; pcre:"/^PASS\s[^\n]{100}/smi"; reference:bugtraq,10078; reference:bugtraq,10720; reference:bugtraq,1690; reference:bugtraq,3884; reference:bugtraq,8601; reference:bugtraq,9285; reference:cve,1999-1519; reference:cve,1999-1539; reference:cve,2000-1035; reference:cve,2002-0126; reference:cve,2002-0895; classtype:attempted-admin; sid:2101972; rev:18; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101972
 `alert ftp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP PASS overflow attempt"; flow:to_server,established,no_stream; content:"PASS"; nocase; isdataat:100,relative; pcre:"/^PASS\s[^\n]{100}/smi"; reference:bugtraq,10078; reference:bugtraq,10720; reference:bugtraq,1690; reference:bugtraq,3884; reference:bugtraq,8601; reference:bugtraq,9285; reference:cve,1999-1519; reference:cve,1999-1539; reference:cve,2000-1035; reference:cve,2002-0126; reference:cve,2002-0895; classtype:attempted-admin; sid:2101972; rev:18; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -927,10 +773,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD overflow attempt"; flow:to_server,established; content:"MKD"; nocase; isdataat:100,relative; pcre:"/^MKD\s[^\n]{100}/smi"; reference:bugtraq,612; reference:bugtraq,7278; reference:bugtraq,9872; reference:cve,1999-0911; reference:nessus,12108; classtype:attempted-admin; sid:2101973; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101973
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD overflow attempt"; flow:to_server,established; content:"MKD"; nocase; isdataat:100,relative; pcre:"/^MKD\s[^\n]{100}/smi"; reference:bugtraq,612; reference:bugtraq,7278; reference:bugtraq,9872; reference:cve,1999-0911; reference:nessus,12108; classtype:attempted-admin; sid:2101973; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -970,10 +812,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP REST overflow attempt"; flow:to_server,established; content:"REST"; nocase; isdataat:100,relative; pcre:"/^REST\s[^\n]{100}/smi"; reference:bugtraq,2972; reference:cve,2001-0826; classtype:attempted-admin; sid:2101974; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101974
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP REST overflow attempt"; flow:to_server,established; content:"REST"; nocase; isdataat:100,relative; pcre:"/^REST\s[^\n]{100}/smi"; reference:bugtraq,2972; reference:cve,2001-0826; classtype:attempted-admin; sid:2101974; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1011,10 +849,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP DELE overflow attempt"; flow:to_server,established; content:"DELE"; nocase; isdataat:100,relative; pcre:"/^DELE\s[^\n]{100}/smi"; reference:bugtraq,2972; reference:cve,2001-0826; reference:cve,2001-1021; classtype:attempted-admin; sid:2101975; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101975
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP DELE overflow attempt"; flow:to_server,established; content:"DELE"; nocase; isdataat:100,relative; pcre:"/^DELE\s[^\n]{100}/smi"; reference:bugtraq,2972; reference:cve,2001-0826; reference:cve,2001-1021; classtype:attempted-admin; sid:2101975; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1054,10 +888,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP RMD overflow attempt"; flow:to_server,established; content:"RMD"; nocase; isdataat:100,relative; pcre:"/^RMD\s[^\n]{100}/smi"; reference:bugtraq,2972; reference:cve,2000-0133; reference:cve,2001-0826; reference:cve,2001-1021; classtype:attempted-admin; sid:2101976; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101976
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP RMD overflow attempt"; flow:to_server,established; content:"RMD"; nocase; isdataat:100,relative; pcre:"/^RMD\s[^\n]{100}/smi"; reference:bugtraq,2972; reference:cve,2000-0133; reference:cve,2001-0826; reference:cve,2001-1021; classtype:attempted-admin; sid:2101976; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1095,10 +925,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RMDIR overflow attempt"; flow:to_server,established; content:"RMDIR"; nocase; isdataat:100,relative; pcre:"/^RMDIR\s[^\n]{100}/smi"; reference:bugtraq,819; classtype:attempted-admin; sid:2101942; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101942
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RMDIR overflow attempt"; flow:to_server,established; content:"RMDIR"; nocase; isdataat:100,relative; pcre:"/^RMDIR\s[^\n]{100}/smi"; reference:bugtraq,819; classtype:attempted-admin; sid:2101942; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1138,10 +964,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP SITE NEWER overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"NEWER"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+NEWER\s[^\n]{100}/smi"; reference:bugtraq,229; reference:cve,1999-0800; classtype:attempted-admin; sid:2101920; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101920
 `alert ftp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP SITE NEWER overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"NEWER"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+NEWER\s[^\n]{100}/smi"; reference:bugtraq,229; reference:cve,1999-0800; classtype:attempted-admin; sid:2101920; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1179,10 +1001,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP SITE ZIPCHK overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"ZIPCHK"; distance:1; nocase; isdataat:100,relative; pcre:"/^SITE\s+ZIPCHK\s[^\n]{100}/smi"; reference:cve,2000-0040; classtype:attempted-admin; sid:2101921; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101921
 `alert ftp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP SITE ZIPCHK overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"ZIPCHK"; distance:1; nocase; isdataat:100,relative; pcre:"/^SITE\s+ZIPCHK\s[^\n]{100}/smi"; reference:cve,2000-0040; classtype:attempted-admin; sid:2101921; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1222,10 +1040,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP .forward"; flow:to_server,established; content:".forward"; reference:arachnids,319; classtype:suspicious-filename-detect; sid:2100334; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100334
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP .forward"; flow:to_server,established; content:".forward"; reference:arachnids,319; classtype:suspicious-filename-detect; sid:2100334; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1263,10 +1077,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP .rhosts"; flow:to_server,established; content:".rhosts"; reference:arachnids,328; classtype:suspicious-filename-detect; sid:2100335; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100335
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP .rhosts"; flow:to_server,established; content:".rhosts"; reference:arachnids,328; classtype:suspicious-filename-detect; sid:2100335; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1306,10 +1116,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP ADMw0rm ftp login attempt"; flow:to_server,established; content:"USER"; nocase; content:"w0rm"; distance:1; nocase; pcre:"/^USER\s+w0rm/smi"; reference:arachnids,01; classtype:suspicious-login; sid:2100144; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100144
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP ADMw0rm ftp login attempt"; flow:to_server,established; content:"USER"; nocase; content:"w0rm"; distance:1; nocase; pcre:"/^USER\s+w0rm/smi"; reference:arachnids,01; classtype:suspicious-login; sid:2100144; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1347,10 +1153,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP ALLO overflow attempt"; flow:to_server,established; content:"ALLO"; nocase; isdataat:100,relative; pcre:"/^ALLO\s[^\n]{100}/smi"; reference:bugtraq,9953; classtype:attempted-admin; sid:2102449; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102449
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP ALLO overflow attempt"; flow:to_server,established; content:"ALLO"; nocase; isdataat:100,relative; pcre:"/^ALLO\s[^\n]{100}/smi"; reference:bugtraq,9953; classtype:attempted-admin; sid:2102449; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1390,10 +1192,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CEL overflow attempt"; flow:to_server,established; content:"CEL"; nocase; isdataat:100,relative; pcre:"/^CEL\s[^\n]{100}/smi"; reference:arachnids,257; reference:bugtraq,679; reference:cve,1999-0789; reference:nessus,10009; classtype:attempted-admin; sid:2100337; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100337
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CEL overflow attempt"; flow:to_server,established; content:"CEL"; nocase; isdataat:100,relative; pcre:"/^CEL\s[^\n]{100}/smi"; reference:arachnids,257; reference:bugtraq,679; reference:cve,1999-0789; reference:nessus,10009; classtype:attempted-admin; sid:2100337; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1431,10 +1229,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CMD overflow attempt"; flow:to_server,established; content:"CMD"; nocase; isdataat:100,relative; pcre:"/^CMD\s[^\n]{100}/smi"; classtype:attempted-admin; sid:2101621; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101621
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CMD overflow attempt"; flow:to_server,established; content:"CMD"; nocase; isdataat:100,relative; pcre:"/^CMD\s[^\n]{100}/smi"; classtype:attempted-admin; sid:2101621; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1474,10 +1268,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CWD overflow attempt"; flow:to_server,established; content:"CWD"; nocase; isdataat:100,relative; pcre:"/^CWD\s[^\n]{100}/smi"; reference:bugtraq,11069; reference:bugtraq,1227; reference:bugtraq,1690; reference:bugtraq,6869; reference:bugtraq,7251; reference:bugtraq,7950; reference:cve,1999-0219; reference:cve,1999-1058; reference:cve,1999-1510; reference:cve,2000-1035; reference:cve,2000-1194; reference:cve,2001-0781; reference:cve,2002-0126; reference:cve,2002-0405; classtype:attempted-admin; sid:2101919; rev:24; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101919
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CWD overflow attempt"; flow:to_server,established; content:"CWD"; nocase; isdataat:100,relative; pcre:"/^CWD\s[^\n]{100}/smi"; reference:bugtraq,11069; reference:bugtraq,1227; reference:bugtraq,1690; reference:bugtraq,6869; reference:bugtraq,7251; reference:bugtraq,7950; reference:cve,1999-0219; reference:cve,1999-1058; reference:cve,1999-1510; reference:cve,2000-1035; reference:cve,2000-1194; reference:cve,2001-0781; reference:cve,2002-0126; reference:cve,2002-0405; classtype:attempted-admin; sid:2101919; rev:24; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1515,10 +1305,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE CPWD overflow attempt"; flow:established,to_server; content:"SITE"; nocase; content:"CPWD"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+CPWD\s[^\n]{100}/smi"; reference:bugtraq,5427; reference:cve,2002-0826; classtype:misc-attack; sid:2101888; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101888
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE CPWD overflow attempt"; flow:established,to_server; content:"SITE"; nocase; content:"CPWD"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+CPWD\s[^\n]{100}/smi"; reference:bugtraq,5427; reference:cve,2002-0826; classtype:misc-attack; sid:2101888; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1558,10 +1344,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE NEWER attempt"; flow:to_server,established; content:"SITE"; nocase; content:"NEWER"; distance:1; nocase; pcre:"/^SITE\s+NEWER/smi"; reference:cve,1999-0880; reference:nessus,10319; classtype:attempted-dos; sid:2101864; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101864
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE NEWER attempt"; flow:to_server,established; content:"SITE"; nocase; content:"NEWER"; distance:1; nocase; pcre:"/^SITE\s+NEWER/smi"; reference:cve,1999-0880; reference:nessus,10319; classtype:attempted-dos; sid:2101864; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1599,10 +1381,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any  (msg:"GPL FTP STAT * dos attempt"; flow:to_server,established; content:"STAT"; nocase; pcre:"/^STAT\s+[^\n]*\x2a/smi"; metadata: former_category FTP; reference:bugtraq,4482; reference:cve,2002-0073; reference:nessus,10934; reference:url,www.microsoft.com/technet/security/bulletin/MS02-018.mspx; classtype:attempted-dos; sid:2101777; rev:11; metadata:created_at 2010_09_23, updated_at 2017_03_21;)
 
 # 2101777
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any  (msg:"GPL FTP STAT * dos attempt"; flow:to_server,established; content:"STAT"; nocase; pcre:"/^STAT\s+[^\n]*\x2a/smi"; metadata: former_category FTP; reference:bugtraq,4482; reference:cve,2002-0073; reference:nessus,10934; reference:url,www.microsoft.com/technet/security/bulletin/MS02-018.mspx; classtype:attempted-dos; sid:2101777; rev:11; metadata:created_at 2010_09_23, updated_at 2017_03_21;)
@@ -1642,10 +1420,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP STAT ? dos attempt"; flow:to_server,established; content:"STAT"; nocase; pcre:"/^STAT\s+[^\n]*\x3f/smi"; reference:bugtraq,4482; reference:cve,2002-0073; reference:nessus,10934; reference:url,www.microsoft.com/technet/security/bulletin/MS02-018.mspx; classtype:attempted-dos; sid:2101778; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101778
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP STAT ? dos attempt"; flow:to_server,established; content:"STAT"; nocase; pcre:"/^STAT\s+[^\n]*\x3f/smi"; reference:bugtraq,4482; reference:cve,2002-0073; reference:nessus,10934; reference:url,www.microsoft.com/technet/security/bulletin/MS02-018.mspx; classtype:attempted-dos; sid:2101778; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1683,10 +1457,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CWD .... attempt"; flow:to_server,established; content:"CWD "; content:" ...."; reference:bugtraq,4884; classtype:denial-of-service; sid:2101779; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101779
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CWD .... attempt"; flow:to_server,established; content:"CWD "; content:" ...."; reference:bugtraq,4884; classtype:denial-of-service; sid:2101779; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1726,10 +1496,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP command overflow attempt"; flow:to_server,established,no_stream; dsize:>100; reference:bugtraq,4638; reference:cve,2002-0606; classtype:protocol-command-decode; sid:2101748; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101748
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP command overflow attempt"; flow:to_server,established,no_stream; dsize:>100; reference:bugtraq,4638; reference:cve,2002-0606; classtype:protocol-command-decode; sid:2101748; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1767,10 +1533,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CWD ~<CR><NEWLINE> attempt"; flow:to_server,established; content:"CWD "; content:" ~|0D 0A|"; reference:bugtraq,2601; reference:cve,2001-0421; classtype:denial-of-service; sid:2101728; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101728
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP CWD ~<CR><NEWLINE> attempt"; flow:to_server,established; content:"CWD "; content:" ~|0D 0A|"; reference:bugtraq,2601; reference:cve,2001-0421; classtype:denial-of-service; sid:2101728; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1810,10 +1572,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP APPE overflow attempt"; flow:to_server,established; content:"APPE"; nocase; isdataat:100,relative; pcre:"/^APPE\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:bugtraq,8542; reference:cve,2000-0133; reference:cve,2003-0466; classtype:attempted-admin; sid:2102391; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102391
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP APPE overflow attempt"; flow:to_server,established; content:"APPE"; nocase; isdataat:100,relative; pcre:"/^APPE\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:bugtraq,8542; reference:cve,2000-0133; reference:cve,2003-0466; classtype:attempted-admin; sid:2102391; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1851,10 +1609,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD ~ attempt"; flow:to_server,established; content:"CWD"; nocase; pcre:"/^CWD\s+~/smi"; reference:bugtraq,2601; reference:bugtraq,9215; reference:cve,2001-0421; classtype:denial-of-service; sid:2101672; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101672
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD ~ attempt"; flow:to_server,established; content:"CWD"; nocase; pcre:"/^CWD\s+~/smi"; reference:bugtraq,2601; reference:bugtraq,9215; reference:cve,2001-0421; classtype:denial-of-service; sid:2101672; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1894,10 +1648,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP large SYST command"; flow:to_server,established; dsize:10; content:"SYST"; nocase; classtype:protocol-command-decode; sid:2101625; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101625
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP large SYST command"; flow:to_server,established; dsize:10; content:"SYST"; nocase; classtype:protocol-command-decode; sid:2101625; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -1935,10 +1685,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP invalid MODE"; flow:to_server,established; content:"MODE"; nocase; pcre:"/^MODE\s+[^ABSC]{1}/msi"; classtype:protocol-command-decode; sid:2101623; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101623
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP invalid MODE"; flow:to_server,established; content:"MODE"; nocase; pcre:"/^MODE\s+[^ABSC]{1}/msi"; classtype:protocol-command-decode; sid:2101623; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -1978,10 +1724,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP RNFR ././ attempt"; flow:to_server,established; content:"RNFR "; nocase; content:" ././"; nocase; classtype:misc-attack; sid:2101622; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101622
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP RNFR ././ attempt"; flow:to_server,established; content:"RNFR "; nocase; content:" ././"; nocase; classtype:misc-attack; sid:2101622; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2019,10 +1761,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE overflow attempt"; flow:to_server,established; content:"SITE"; nocase; isdataat:100,relative; pcre:"/^SITE\s[^\n]{100}/smi"; reference:cve,1999-0838; reference:cve,2001-0755; reference:cve,2001-0770; classtype:attempted-admin; sid:2101529; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101529
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE overflow attempt"; flow:to_server,established; content:"SITE"; nocase; isdataat:100,relative; pcre:"/^SITE\s[^\n]{100}/smi"; reference:cve,1999-0838; reference:cve,2001-0755; reference:cve,2001-0770; classtype:attempted-admin; sid:2101529; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2062,10 +1800,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE CHOWN overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"CHOWN"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+CHOWN\s[^\n]{100}/smi"; reference:bugtraq,2120; reference:cve,2001-0065; classtype:attempted-admin; sid:2101562; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101562
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE CHOWN overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"CHOWN"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+CHOWN\s[^\n]{100}/smi"; reference:bugtraq,2120; reference:cve,2001-0065; classtype:attempted-admin; sid:2101562; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2103,10 +1837,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP shadow retrieval attempt"; flow:to_server,established; content:"RETR"; nocase; content:"shadow"; classtype:suspicious-filename-detect; sid:2101928; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101928
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP shadow retrieval attempt"; flow:to_server,established; content:"RETR"; nocase; content:"shadow"; classtype:suspicious-filename-detect; sid:2101928; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2146,10 +1876,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP CWD command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"CWD"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010731; classtype:attempted-recon; sid:2010731; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
-
 # 2010731
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP FTP CWD command attempt without login"; flow:established,to_server; flowbits:isnotset,ET.ftp.user.login; content:!"USER"; depth:4; content:"CWD"; nocase; reference:url,www.nsftools.com/tips/RawFTP.htm; reference:url,doc.emergingthreats.net/2010731; classtype:attempted-recon; sid:2010731; rev:4; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 ` 
@@ -2187,10 +1913,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"ET FTP USER login flowbit"; flow:established,to_server; content:"USER "; nocase; depth:5; flowbits:set,ET.ftp.user.login; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002850; classtype:not-suspicious; sid:2002850; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
 
 # 2002850
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"ET FTP USER login flowbit"; flow:established,to_server; content:"USER "; nocase; depth:5; flowbits:set,ET.ftp.user.login; flowbits:noalert; reference:url,doc.emergingthreats.net/bin/view/Main/2002850; classtype:not-suspicious; sid:2002850; rev:5; metadata:created_at 2010_07_30, updated_at 2010_07_30;)
@@ -2230,10 +1952,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'STOR 1MB' possible warez site"; flow:to_server,established; content:"STOR"; nocase; content:"1MB"; distance:1; nocase; classtype:misc-activity; sid:2100543; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100543
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'STOR 1MB' possible warez site"; flow:to_server,established; content:"STOR"; nocase; content:"1MB"; distance:1; nocase; classtype:misc-activity; sid:2100543; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2271,10 +1989,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'RETR 1MB' possible warez site"; flow:to_server,established; content:"RETR"; nocase; content:"1MB"; distance:1; nocase; classtype:misc-activity; sid:2100544; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100544
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'RETR 1MB' possible warez site"; flow:to_server,established; content:"RETR"; nocase; content:"1MB"; distance:1; nocase; classtype:misc-activity; sid:2100544; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2314,10 +2028,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'CWD / ' possible warez site"; flow:to_server,established; content:"CWD"; nocase; content:"/ "; distance:1; classtype:misc-activity; sid:2100545; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100545
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'CWD / ' possible warez site"; flow:to_server,established; content:"CWD"; nocase; content:"/ "; distance:1; classtype:misc-activity; sid:2100545; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2355,10 +2065,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'CWD  ' possible warez site"; flow:to_server,established; content:"CWD  "; depth:5; nocase; classtype:misc-activity; sid:2100546; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100546
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'CWD  ' possible warez site"; flow:to_server,established; content:"CWD  "; depth:5; nocase; classtype:misc-activity; sid:2100546; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2398,10 +2104,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'MKD .' possible warez site"; flow:to_server,established; content:"MKD ."; depth:5; nocase; classtype:misc-activity; sid:2100548; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100548
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP 'MKD .' possible warez site"; flow:to_server,established; content:"MKD ."; depth:5; nocase; classtype:misc-activity; sid:2100548; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2439,10 +2141,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP anonymous login attempt"; flow:to_server,established; content:"USER "; depth:5; nocase; content:"anon"; distance:0; classtype:misc-activity; sid:2100553; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100553
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP anonymous login attempt"; flow:to_server,established; content:"USER "; depth:5; nocase; content:"anon"; distance:0; classtype:misc-activity; sid:2100553; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2482,10 +2180,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD space space possible warez site"; flow:to_server,established; content:"MKD  "; depth:5; nocase; classtype:misc-activity; sid:2100547; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100547
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD space space possible warez site"; flow:to_server,established; content:"MKD  "; depth:5; nocase; classtype:misc-activity; sid:2100547; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2523,10 +2217,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP large PWD command"; flow:to_server,established; content:"PWD"; isdataat:7,relative; content:!"|0A|"; within:7; nocase; classtype:protocol-command-decode; sid:2101624; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101624
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP large PWD command"; flow:to_server,established; content:"PWD"; isdataat:7,relative; content:!"|0A|"; within:7; nocase; classtype:protocol-command-decode; sid:2101624; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2566,10 +2256,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP NextFTP client overflow"; flow:to_client,established; content:"|B4| |B4|!|8B CC 83 E9 04 8B 19|3|C9|f|B9 10|"; fast_pattern:only; reference:bugtraq,572; reference:cve,1999-0671; classtype:attempted-user; sid:2100308; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100308
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP NextFTP client overflow"; flow:to_client,established; content:"|B4| |B4|!|8B CC 83 E9 04 8B 19|3|C9|f|B9 10|"; fast_pattern:only; reference:bugtraq,572; reference:cve,1999-0671; classtype:attempted-user; sid:2100308; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2607,10 +2293,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD overflow"; flow:to_server,established; content:"MKD "; isdataat:100,relative; reference:bugtraq,113; reference:bugtraq,2242; reference:cve,1999-0368; classtype:attempted-admin; sid:2100349; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100349
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD overflow"; flow:to_server,established; content:"MKD "; isdataat:100,relative; reference:bugtraq,113; reference:bugtraq,2242; reference:cve,1999-0368; classtype:attempted-admin; sid:2100349; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2650,10 +2332,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP OpenBSD x86 ftpd"; flow:to_server,established; content:" |90|1|C0 99|RR|B0 17 CD 80|h|CC|sh"; fast_pattern:only; reference:arachnids,446; reference:bugtraq,2124; reference:cve,2001-0053; classtype:attempted-user; sid:2100339; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100339
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP OpenBSD x86 ftpd"; flow:to_server,established; content:" |90|1|C0 99|RR|B0 17 CD 80|h|CC|sh"; fast_pattern:only; reference:arachnids,446; reference:bugtraq,2124; reference:cve,2001-0053; classtype:attempted-user; sid:2100339; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2691,10 +2369,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE EXEC format string"; flow:to_server,established; content:"SITE EXEC %020d|7C|%.f%.f|7C 0A|"; depth:32; nocase; reference:arachnids,453; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-user; sid:2100338; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100338
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE EXEC format string"; flow:to_server,established; content:"SITE EXEC %020d|7C|%.f%.f|7C 0A|"; depth:32; nocase; reference:arachnids,453; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-user; sid:2100338; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2734,10 +2408,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP PWD overflow"; flow:to_server,established; content:"PWD|0A|/i"; fast_pattern:only; classtype:attempted-admin; sid:2100340; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100340
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP PWD overflow"; flow:to_server,established; content:"PWD|0A|/i"; fast_pattern:only; classtype:attempted-admin; sid:2100340; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2775,10 +2445,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP XXXXX overflow"; flow:to_server,established; content:"XXXXX/"; fast_pattern:only; classtype:attempted-admin; sid:2100341; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100341
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP XXXXX overflow"; flow:to_server,established; content:"XXXXX/"; fast_pattern:only; classtype:attempted-admin; sid:2100341; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2818,10 +2484,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string check"; flow:to_server,established; content:"f%.f%.f%.f%.f%."; depth:32; reference:arachnids,286; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-recon; sid:2100346; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100346
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string check"; flow:to_server,established; content:"f%.f%.f%.f%.f%."; depth:32; reference:arachnids,286; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-recon; sid:2100346; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2859,10 +2521,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow FreeBSD"; flow:to_server,established; content:"1|C0|PPP|B0|~|CD 80|1|DB|1|C0|"; depth:32; reference:arachnids,228; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-admin; sid:2100343; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100343
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow FreeBSD"; flow:to_server,established; content:"1|C0|PPP|B0|~|CD 80|1|DB|1|C0|"; depth:32; reference:arachnids,228; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-admin; sid:2100343; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2902,10 +2560,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow Linux"; flow:to_server,established; content:"1|C0|1|DB|1|C9 B0|F|CD 80|1|C0|1|DB|"; fast_pattern:only; reference:arachnids,287; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-admin; sid:2100344; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100344
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow Linux"; flow:to_server,established; content:"1|C0|1|DB|1|C9 B0|F|CD 80|1|C0|1|DB|"; fast_pattern:only; reference:arachnids,287; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-admin; sid:2100344; rev:12; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -2943,10 +2597,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow Solaris 2.8"; flow:to_server,established; content:"|90 1B C0 0F 82 10| |17 91 D0| |08|"; fast_pattern:only; reference:arachnids,451; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-user; sid:2100342; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100342
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow Solaris 2.8"; flow:to_server,established; content:"|90 1B C0 0F 82 10| |17 91 D0| |08|"; fast_pattern:only; reference:arachnids,451; reference:bugtraq,1387; reference:cve,2000-0573; classtype:attempted-user; sid:2100342; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -2986,10 +2636,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow generic"; flow:to_server,established; content:"SITE "; nocase; content:" EXEC "; nocase; content:" %p"; nocase; fast_pattern; reference:arachnids,285; reference:bugtraq,1387; reference:cve,2000-0573; reference:nessus,10452; classtype:attempted-admin; sid:2100345; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100345
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0 site exec format string overflow generic"; flow:to_server,established; content:"SITE "; nocase; content:" EXEC "; nocase; content:" %p"; nocase; fast_pattern; reference:arachnids,285; reference:bugtraq,1387; reference:cve,2000-0573; reference:nessus,10452; classtype:attempted-admin; sid:2100345; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3027,10 +2673,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0"; flow:to_server,established; content:"..11venglin@"; reference:arachnids,440; reference:bugtraq,1387; classtype:attempted-user; sid:2100348; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100348
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP wu-ftpd 2.6.0"; flow:to_server,established; content:"..11venglin@"; reference:arachnids,440; reference:bugtraq,1387; classtype:attempted-user; sid:2100348; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3070,10 +2712,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP serv-u directory transversal"; flow:to_server,established; content:".%20."; nocase; fast_pattern:only; reference:bugtraq,2052; reference:cve,2001-0054; classtype:bad-unknown; sid:2100360; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100360
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP serv-u directory transversal"; flow:to_server,established; content:".%20."; nocase; fast_pattern:only; reference:bugtraq,2052; reference:cve,2001-0054; classtype:bad-unknown; sid:2100360; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3111,10 +2749,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE EXEC attempt"; flow:to_server,established; content:"SITE"; nocase; content:"EXEC"; distance:0; nocase; pcre:"/^SITE\s+EXEC/smi"; reference:arachnids,317; reference:bugtraq,2241; reference:cve,1999-0080; reference:cve,1999-0955; classtype:bad-unknown; sid:2100361; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100361
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP SITE EXEC attempt"; flow:to_server,established; content:"SITE"; nocase; content:"EXEC"; distance:0; nocase; pcre:"/^SITE\s+EXEC/smi"; reference:arachnids,317; reference:bugtraq,2241; reference:cve,1999-0080; reference:cve,1999-0955; classtype:bad-unknown; sid:2100361; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3154,10 +2788,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP XCWD overflow attempt"; flow:to_server,established; content:"XCWD"; nocase; isdataat:100,relative; pcre:"/^XCWD\s[^\n]{100}/smi"; reference:bugtraq,11542; reference:bugtraq,8704; classtype:attempted-admin; sid:2102344; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102344
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP XCWD overflow attempt"; flow:to_server,established; content:"XCWD"; nocase; isdataat:100,relative; pcre:"/^XCWD\s[^\n]{100}/smi"; reference:bugtraq,11542; reference:bugtraq,8704; classtype:attempted-admin; sid:2102344; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3195,10 +2825,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP STOR overflow attempt"; flow:to_server,established; content:"STOR"; nocase; isdataat:100,relative; pcre:"/^STOR\s[^\n]{100}/smi"; reference:bugtraq,8668; reference:cve,2000-0133; classtype:attempted-admin; sid:2102343; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102343
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP STOR overflow attempt"; flow:to_server,established; content:"STOR"; nocase; isdataat:100,relative; pcre:"/^STOR\s[^\n]{100}/smi"; reference:bugtraq,8668; reference:cve,2000-0133; classtype:attempted-admin; sid:2102343; rev:4; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3238,10 +2864,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP SITE CHMOD overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"CHMOD"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+CHMOD\s[^\n]{100}/smi"; reference:bugtraq,10181; reference:bugtraq,9483; reference:bugtraq,9675; reference:cve,1999-0838; reference:nessus,12037; classtype:attempted-admin; sid:2102340; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102340
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP SITE CHMOD overflow attempt"; flow:to_server,established; content:"SITE"; nocase; content:"CHMOD"; distance:0; nocase; isdataat:100,relative; pcre:"/^SITE\s+CHMOD\s[^\n]{100}/smi"; reference:bugtraq,10181; reference:bugtraq,9483; reference:bugtraq,9675; reference:cve,1999-0838; reference:nessus,12037; classtype:attempted-admin; sid:2102340; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3279,10 +2901,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP LIST buffer overflow attempt"; flow:to_server,established; content:"LIST"; nocase; isdataat:100,relative; pcre:"/^LIST\s[^\n]{100,}/smi"; reference:bugtraq,10181; reference:bugtraq,6869; reference:bugtraq,7251; reference:bugtraq,7861; reference:bugtraq,8486; reference:bugtraq,9675; reference:cve,1999-0349; reference:cve,1999-1510; reference:cve,2000-0129; reference:url,www.microsoft.com/technet/security/bulletin/MS99-003.mspx; classtype:misc-attack; sid:2102338; rev:14; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102338
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP LIST buffer overflow attempt"; flow:to_server,established; content:"LIST"; nocase; isdataat:100,relative; pcre:"/^LIST\s[^\n]{100,}/smi"; reference:bugtraq,10181; reference:bugtraq,6869; reference:bugtraq,7251; reference:bugtraq,7861; reference:bugtraq,8486; reference:bugtraq,9675; reference:cve,1999-0349; reference:cve,1999-1510; reference:cve,2000-0129; reference:url,www.microsoft.com/technet/security/bulletin/MS99-003.mspx; classtype:misc-attack; sid:2102338; rev:14; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3322,10 +2940,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RENAME format string attempt"; flow:to_server,established; content:"RENAME"; nocase; pcre:"/^RENAME\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,9262; classtype:misc-attack; sid:2102333; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102333
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RENAME format string attempt"; flow:to_server,established; content:"RENAME"; nocase; pcre:"/^RENAME\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,9262; classtype:misc-attack; sid:2102333; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3363,10 +2977,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP MKDIR format string attempt"; flow:to_server,established; content:"MKDIR"; nocase; pcre:"/^MKDIR\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,9262; classtype:misc-attack; sid:2102332; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102332
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP MKDIR format string attempt"; flow:to_server,established; content:"MKDIR"; nocase; pcre:"/^MKDIR\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,9262; classtype:misc-attack; sid:2102332; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3406,10 +3016,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP PASS format string attempt"; flow:to_server,established; content:"PASS"; nocase; pcre:"/^PASS\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,7474; reference:bugtraq,9262; reference:bugtraq,9800; reference:cve,2000-0699; classtype:misc-attack; sid:2102179; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102179
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP PASS format string attempt"; flow:to_server,established; content:"PASS"; nocase; pcre:"/^PASS\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,7474; reference:bugtraq,9262; reference:bugtraq,9800; reference:cve,2000-0699; classtype:misc-attack; sid:2102179; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3447,10 +3053,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP USER format string attempt"; flow:to_server,established; content:"USER"; nocase; pcre:"/^USER\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,7474; reference:bugtraq,7776; reference:bugtraq,9262; reference:bugtraq,9402; reference:bugtraq,9600; reference:bugtraq,9800; reference:cve,2004-0277; reference:nessus,10041; reference:nessus,11687; classtype:misc-attack; sid:2102178; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102178
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP USER format string attempt"; flow:to_server,established; content:"USER"; nocase; pcre:"/^USER\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,7474; reference:bugtraq,7776; reference:bugtraq,9262; reference:bugtraq,9402; reference:bugtraq,9600; reference:bugtraq,9800; reference:cve,2004-0277; reference:nessus,10041; reference:nessus,11687; classtype:misc-attack; sid:2102178; rev:17; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3490,10 +3092,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD Root directory transversal attempt"; flow:to_server,established; content:"CWD"; nocase; content:"C|3A 5C|"; distance:1; fast_pattern; reference:bugtraq,7674; reference:cve,2003-0392; reference:nessus,11677; classtype:protocol-command-decode; sid:2102125; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102125
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD Root directory transversal attempt"; flow:to_server,established; content:"CWD"; nocase; content:"C|3A 5C|"; distance:1; fast_pattern; reference:bugtraq,7674; reference:cve,2003-0392; reference:nessus,11677; classtype:protocol-command-decode; sid:2102125; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3531,10 +3129,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MDTM overflow attempt"; flow:to_server,established; content:"MDTM"; nocase; isdataat:100,relative; pcre:"/^MDTM\s[^\n]{100}/smi"; reference:bugtraq,9751; reference:cve,2001-1021; reference:cve,2004-0330; reference:nessus,12080; classtype:attempted-admin; sid:2102546; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102546
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MDTM overflow attempt"; flow:to_server,established; content:"MDTM"; nocase; isdataat:100,relative; pcre:"/^MDTM\s[^\n]{100}/smi"; reference:bugtraq,9751; reference:cve,2001-1021; reference:cve,2004-0330; reference:nessus,12080; classtype:attempted-admin; sid:2102546; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3574,10 +3168,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RETR format string attempt"; flow:to_server,established; content:"RETR"; nocase; pcre:"/^RETR\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,9800; classtype:attempted-admin; sid:2102574; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102574
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RETR format string attempt"; flow:to_server,established; content:"RETR"; nocase; pcre:"/^RETR\s[^\n]*?%[^\n]*?%/smi"; reference:bugtraq,9800; classtype:attempted-admin; sid:2102574; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3615,10 +3205,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Suspicious Percentage Symbol Usage in FTP Username"; flow:established,to_server; content:"USER "; depth:5; nocase; content:!"|0d 0a|"; within:50; content:"%"; distance:0; metadata: former_category FTP; reference:url,www.checkpoint.com/defense/advisories/public/2010/sbp-16-Aug.html; classtype:bad-unknown; sid:2011487; rev:2; metadata:created_at 2010_09_28, updated_at 2010_09_28;)
 
 # 2011487
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Suspicious Percentage Symbol Usage in FTP Username"; flow:established,to_server; content:"USER "; depth:5; nocase; content:!"|0d 0a|"; within:50; content:"%"; distance:0; metadata: former_category FTP; reference:url,www.checkpoint.com/defense/advisories/public/2010/sbp-16-Aug.html; classtype:bad-unknown; sid:2011487; rev:2; metadata:created_at 2010_09_28, updated_at 2010_09_28;)
@@ -3658,10 +3244,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD ..."; flow:to_server,established; content:"CWD"; nocase; content:"..."; distance:0; pcre:"/^CWD\s[^\n]*?\.\.\./smi"; reference:bugtraq,9237; classtype:bad-unknown; sid:2101229; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101229
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD ..."; flow:to_server,established; content:"CWD"; nocase; content:"..."; distance:0; pcre:"/^CWD\s[^\n]*?\.\.\./smi"; reference:bugtraq,9237; classtype:bad-unknown; sid:2101229; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3699,10 +3281,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD ~root attempt"; flow:to_server,established; content:"CWD"; nocase; content:"~root"; distance:1; nocase; pcre:"/^CWD\s+~root/smi"; reference:arachnids,318; reference:cve,1999-0082; classtype:bad-unknown; sid:2100336; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100336
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP CWD ~root attempt"; flow:to_server,established; content:"CWD"; nocase; content:"~root"; distance:1; nocase; pcre:"/^CWD\s+~root/smi"; reference:arachnids,318; reference:cve,1999-0082; classtype:bad-unknown; sid:2100336; rev:11; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3742,10 +3320,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP NLST overflow attempt"; flow:to_server,established; content:"NLST"; nocase; isdataat:100,relative; pcre:"/^NLST\s[^\n]{100}/smi"; reference:bugtraq,10184; reference:bugtraq,7909; reference:bugtraq,9675; reference:cve,1999-1544; classtype:attempted-admin; sid:2102374; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102374
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP NLST overflow attempt"; flow:to_server,established; content:"NLST"; nocase; isdataat:100,relative; pcre:"/^NLST\s[^\n]{100}/smi"; reference:bugtraq,10184; reference:bugtraq,7909; reference:bugtraq,9675; reference:cve,1999-1544; classtype:attempted-admin; sid:2102374; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3783,10 +3357,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP PORT bounce attempt"; flow:to_server,established; content:"PORT"; nocase; ftpbounce; pcre:"/^PORT/smi"; classtype:misc-attack; sid:2103441; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2103441
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP PORT bounce attempt"; flow:to_server,established; content:"PORT"; nocase; ftpbounce; pcre:"/^PORT/smi"; classtype:misc-attack; sid:2103441; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3826,10 +3396,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP REST with numeric argument"; flow:to_server,established; content:"REST"; nocase; pcre:"/REST\s+[0-9]+\n/i"; reference:bugtraq,7825; classtype:attempted-recon; sid:2103460; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103460
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP REST with numeric argument"; flow:to_server,established; content:"REST"; nocase; pcre:"/REST\s+[0-9]+\n/i"; reference:bugtraq,7825; classtype:attempted-recon; sid:2103460; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3867,10 +3433,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RETR overflow attempt"; flow:to_server,established; content:"RETR"; nocase; isdataat:100,relative; pcre:"/^RETR\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:cve,2003-0466; reference:cve,2004-0287; reference:cve,2004-0298; classtype:attempted-admin; sid:2102392; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102392
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RETR overflow attempt"; flow:to_server,established; content:"RETR"; nocase; isdataat:100,relative; pcre:"/^RETR\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:cve,2003-0466; reference:cve,2004-0287; reference:cve,2004-0298; classtype:attempted-admin; sid:2102392; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3910,10 +3472,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RNFR overflow attempt"; flow:to_server,established; content:"RNFR"; nocase; isdataat:100,relative; pcre:"/^RNFR\s[^\n]{100}/smi"; classtype:attempted-admin; sid:2103077; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2103077
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RNFR overflow attempt"; flow:to_server,established; content:"RNFR"; nocase; isdataat:100,relative; pcre:"/^RNFR\s[^\n]{100}/smi"; classtype:attempted-admin; sid:2103077; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -3951,10 +3509,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RNTO overflow attempt"; flow:to_server,established; content:"RNTO"; nocase; isdataat:100,relative; pcre:"/^RNTO\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:cve,2000-0133; reference:cve,2001-1021; reference:cve,2003-0466; classtype:attempted-admin; sid:2102389; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102389
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP RNTO overflow attempt"; flow:to_server,established; content:"RNTO"; nocase; isdataat:100,relative; pcre:"/^RNTO\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:cve,2000-0133; reference:cve,2001-1021; reference:cve,2003-0466; classtype:attempted-admin; sid:2102389; rev:8; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -3994,10 +3548,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP STAT overflow attempt"; flow:to_server,established; content:"STAT"; nocase; isdataat:100,relative; pcre:"/^STAT\s[^\n]{100}/smi"; reference:bugtraq,3507; reference:bugtraq,8542; reference:cve,2001-0325; reference:cve,2001-1021; reference:url,labs.defcom.com/adv/2001/def-2001-31.txt; classtype:attempted-admin; sid:2101379; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101379
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP STAT overflow attempt"; flow:to_server,established; content:"STAT"; nocase; isdataat:100,relative; pcre:"/^STAT\s[^\n]{100}/smi"; reference:bugtraq,3507; reference:bugtraq,8542; reference:cve,2001-0325; reference:cve,2001-1021; reference:url,labs.defcom.com/adv/2001/def-2001-31.txt; classtype:attempted-admin; sid:2101379; rev:13; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4035,10 +3585,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP STOU overflow attempt"; flow:to_server,established; content:"STOU"; nocase; isdataat:100,relative; pcre:"/^STOU\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:cve,2003-0466; classtype:attempted-admin; sid:2102390; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102390
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP STOU overflow attempt"; flow:to_server,established; content:"STOU"; nocase; isdataat:100,relative; pcre:"/^STOU\s[^\n]{100}/smi"; reference:bugtraq,8315; reference:cve,2003-0466; classtype:attempted-admin; sid:2102390; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4078,10 +3624,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP XMKD overflow attempt"; flow:to_server,established; content:"XMKD"; nocase; isdataat:100,relative; pcre:"/^XMKD\s[^\n]{100}/smi"; reference:bugtraq,7909; reference:cve,2000-0133; reference:cve,2001-1021; classtype:attempted-admin; sid:2102373; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2102373
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP XMKD overflow attempt"; flow:to_server,established; content:"XMKD"; nocase; isdataat:100,relative; pcre:"/^XMKD\s[^\n]{100}/smi"; reference:bugtraq,7909; reference:cve,2000-0133; reference:cve,2001-1021; classtype:attempted-admin; sid:2102373; rev:5; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4119,10 +3661,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP format string attempt"; flow:to_server,established; content:"%"; fast_pattern:only; pcre:"/\s+.*?%.*?%/smi"; classtype:string-detect; sid:2102417; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102417
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP format string attempt"; flow:to_server,established; content:"%"; fast_pattern:only; pcre:"/\s+.*?%.*?%/smi"; classtype:string-detect; sid:2102417; rev:2; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4162,10 +3700,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP format string attempt"; flow:to_server,established; content:"%p"; nocase; reference:nessus,10452; reference:bugtraq,1387; reference:bugtraq,2240; reference:bugtraq,726; reference:cve,2000-0573; reference:cve,1999-0997; classtype:attempted-admin; sid:2101530; rev:14; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101530
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP format string attempt"; flow:to_server,established; content:"%p"; nocase; reference:nessus,10452; reference:bugtraq,1387; reference:bugtraq,2240; reference:bugtraq,726; reference:cve,2000-0573; reference:cve,1999-0997; classtype:attempted-admin; sid:2101530; rev:14; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4203,10 +3737,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP passwd retrieval attempt"; flow:to_server,established; content:"RETR"; nocase; content:"passwd"; reference:arachnids,213; classtype:suspicious-filename-detect; sid:2100356; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100356
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP passwd retrieval attempt"; flow:to_server,established; content:"RETR"; nocase; content:"passwd"; reference:arachnids,213; classtype:suspicious-filename-detect; sid:2100356; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4246,10 +3776,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $HOME_NET any -> $EXTERNAL_NET any (msg:"GPL FTP FTP Bad login"; flow:from_server,established; content:"530 "; depth:4; pcre:"/^530\s+(Login|User)/smi"; classtype:bad-unknown; sid:2100491; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100491
 `#alert ftp $HOME_NET any -> $EXTERNAL_NET any (msg:"GPL FTP FTP Bad login"; flow:from_server,established; content:"530 "; depth:4; pcre:"/^530\s+(Login|User)/smi"; classtype:bad-unknown; sid:2100491; rev:10; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4287,10 +3813,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP no password"; flow:from_client,established; content:"PASS"; nocase; pcre:"/^PASS\s*\n/smi"; reference:arachnids,322; classtype:unknown; sid:2100489; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2100489
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP no password"; flow:from_client,established; content:"PASS"; nocase; pcre:"/^PASS\s*\n/smi"; reference:arachnids,322; classtype:unknown; sid:2100489; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4330,10 +3852,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD / possible warez site"; flow:to_server,established; content:"MKD"; nocase; content:"/ "; distance:1; classtype:misc-activity; sid:2100554; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2100554
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP MKD / possible warez site"; flow:to_server,established; content:"MKD"; nocase; content:"/ "; distance:1; classtype:misc-activity; sid:2100554; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4371,10 +3889,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP anonymous ftp login attempt"; flow:to_server,established; content:"USER"; nocase; content:" ftp|0D 0A|"; nocase; classtype:misc-activity; sid:2101449; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101449
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP anonymous ftp login attempt"; flow:to_server,established; content:"USER"; nocase; content:" ftp|0D 0A|"; nocase; classtype:misc-activity; sid:2101449; rev:9; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4414,10 +3928,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP file_id.diz access possible warez site"; flow:to_server,established; content:"RETR"; nocase; content:"file_id.diz"; distance:1; nocase; classtype:suspicious-filename-detect; sid:2101445; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101445
 `#alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP FTP file_id.diz access possible warez site"; flow:to_server,established; content:"RETR"; nocase; content:"file_id.diz"; distance:1; nocase; classtype:suspicious-filename-detect; sid:2101445; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4455,10 +3965,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP LIST integer overflow attempt"; flow:to_server,established; content:"LIST"; nocase; pcre:"/^LIST\s+\x22-W\s+\d/smi"; reference:bugtraq,8875; reference:cve,2003-0853; reference:cve,2003-0854; classtype:misc-attack; sid:2102272; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2102272
 `#alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"GPL FTP LIST integer overflow attempt"; flow:to_server,established; content:"LIST"; nocase; pcre:"/^LIST\s+\x22-W\s+\d/smi"; reference:bugtraq,8875; reference:cve,2003-0853; reference:cve,2003-0854; classtype:misc-attack; sid:2102272; rev:6; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4498,10 +4004,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $HOME_NET any -> $EXTERNAL_NET any (msg:"ET FTP Outbound Java Anonymous FTP Login"; flow:to_server,established; content:"USER anonymous|0d 0a|PASS Java1."; fast_pattern:7,20; pcre:"/^\d\.\d(_\d+)?\@\r\n/R"; flowbits:set,ET.Java.FTP.Logon; classtype:misc-activity; sid:2016687; rev:3; metadata:created_at 2013_03_28, updated_at 2013_03_28;)
-
 # 2016687
 `alert ftp $HOME_NET any -> $EXTERNAL_NET any (msg:"ET FTP Outbound Java Anonymous FTP Login"; flow:to_server,established; content:"USER anonymous|0d 0a|PASS Java1."; fast_pattern:7,20; pcre:"/^\d\.\d(_\d+)?\@\r\n/R"; flowbits:set,ET.Java.FTP.Logon; classtype:misc-activity; sid:2016687; rev:3; metadata:created_at 2013_03_28, updated_at 2013_03_28;)
 ` 
@@ -4539,10 +4041,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP authorized_keys file transferred"; flow:to_server,established; content:"authorized_keys"; classtype:suspicious-filename-detect; sid:2101927; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 
 # 2101927
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP authorized_keys file transferred"; flow:to_server,established; content:"authorized_keys"; classtype:suspicious-filename-detect; sid:2101927; rev:7; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
@@ -4582,10 +4080,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-#alert tcp any any -> $HOME_NET 21 (msg:"ET FTP ProFTPD Backdoor Inbound Backdoor Open Request (ACIDBITCHEZ)"; flow:established,to_server; content:"HELP "; depth:5; content:"ACIDBITCHEZ"; distance:0; nocase; reference:url,slashdot.org/story/10/12/02/131214/ProFTPDorg-Compromised-Backdoor-Distributed; reference:url,xorl.wordpress.com/2010/12/02/news-proftpd-owned-and-backdoored/; reference:url, sourceforge.net/mailarchive/message.php?msg_name=alpine.DEB.2.00.1012011542220.12930%40familiar.castaglia.org; classtype:trojan-activity; sid:2011994; rev:5; metadata:created_at 2010_12_02, updated_at 2010_12_02;)
-
 # 2011994
 `#alert tcp any any -> $HOME_NET 21 (msg:"ET FTP ProFTPD Backdoor Inbound Backdoor Open Request (ACIDBITCHEZ)"; flow:established,to_server; content:"HELP "; depth:5; content:"ACIDBITCHEZ"; distance:0; nocase; reference:url,slashdot.org/story/10/12/02/131214/ProFTPDorg-Compromised-Backdoor-Distributed; reference:url,xorl.wordpress.com/2010/12/02/news-proftpd-owned-and-backdoored/; reference:url, sourceforge.net/mailarchive/message.php?msg_name=alpine.DEB.2.00.1012011542220.12930%40familiar.castaglia.org; classtype:trojan-activity; sid:2011994; rev:5; metadata:created_at 2010_12_02, updated_at 2010_12_02;)
 ` 
@@ -4623,10 +4117,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Suspicious Quotation Mark Usage in FTP Username"; flow:established,to_server; content:"USER "; depth:5; content:"|22|"; distance:0; pcre:"/^USER [^\r\n]*?\x22/";  metadata: former_category FTP; reference:url,www.checkpoint.com/defense/advisories/public/2010/sbp-16-Aug.html; classtype:bad-unknown; sid:2011488; rev:2; metadata:created_at 2010_09_28, updated_at 2010_09_28;)
 
 # 2011488
 `alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"ET FTP Suspicious Quotation Mark Usage in FTP Username"; flow:established,to_server; content:"USER "; depth:5; content:"|22|"; distance:0; pcre:"/^USER [^\r\n]*?\x22/";  metadata: former_category FTP; reference:url,www.checkpoint.com/defense/advisories/public/2010/sbp-16-Aug.html; classtype:bad-unknown; sid:2011488; rev:2; metadata:created_at 2010_09_28, updated_at 2010_09_28;)
@@ -4666,10 +4156,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP USER overflow attempt"; flow:to_server,established,no_stream; content:"USER|20|"; nocase; isdataat:100,relative; pcre:"/^USER\x20[^\x00\x20\x0a\x0d]{100}/smi"; reference:bugtraq,10078; reference:bugtraq,1227; reference:bugtraq,1504; reference:bugtraq,1690; reference:bugtraq,4638; reference:bugtraq,7307; reference:bugtraq,8376; reference:cve,1999-1510; reference:cve,1999-1514; reference:cve,1999-1519; reference:cve,1999-1539; reference:cve,2000-0479; reference:cve,2000-0656; reference:cve,2000-0761; reference:cve,2000-0943; reference:cve,2000-1035; reference:cve,2000-1194; reference:cve,2001-0256; reference:cve,2001-0794; reference:cve,2001-0826; reference:cve,2002-0126; reference:cve,2002-1522; reference:cve,2003-0271; reference:cve,2004-0286; classtype:attempted-admin; sid:2101734; rev:36; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
-
 # 2101734
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP USER overflow attempt"; flow:to_server,established,no_stream; content:"USER|20|"; nocase; isdataat:100,relative; pcre:"/^USER\x20[^\x00\x20\x0a\x0d]{100}/smi"; reference:bugtraq,10078; reference:bugtraq,1227; reference:bugtraq,1504; reference:bugtraq,1690; reference:bugtraq,4638; reference:bugtraq,7307; reference:bugtraq,8376; reference:cve,1999-1510; reference:cve,1999-1514; reference:cve,1999-1519; reference:cve,1999-1539; reference:cve,2000-0479; reference:cve,2000-0656; reference:cve,2000-0761; reference:cve,2000-0943; reference:cve,2000-1035; reference:cve,2000-1194; reference:cve,2001-0256; reference:cve,2001-0794; reference:cve,2001-0826; reference:cve,2002-0126; reference:cve,2002-1522; reference:cve,2003-0271; reference:cve,2004-0286; classtype:attempted-admin; sid:2101734; rev:36; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 ` 
@@ -4707,10 +4193,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP iss scan"; flow:to_server,established; content:"pass -iss@iss"; fast_pattern; reference:arachnids,331; classtype:suspicious-login; sid:2100354; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
 
 # 2100354
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP iss scan"; flow:to_server,established; content:"pass -iss@iss"; fast_pattern; reference:arachnids,331; classtype:suspicious-login; sid:2100354; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
@@ -4750,10 +4232,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP pass wh00t"; flow:to_server,established; content:"pass wh00t"; nocase; fast_pattern; reference:arachnids,324; classtype:suspicious-login; sid:2100355; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
-
 # 2100355
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP pass wh00t"; flow:to_server,established; content:"pass wh00t"; nocase; fast_pattern; reference:arachnids,324; classtype:suspicious-login; sid:2100355; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
 ` 
@@ -4791,10 +4269,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP piss scan"; flow:to_server,established; content:"pass -cklaus"; fast_pattern; classtype:suspicious-login; sid:2100357; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
 
 # 2100357
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP piss scan"; flow:to_server,established; content:"pass -cklaus"; fast_pattern; classtype:suspicious-login; sid:2100357; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
@@ -4834,10 +4308,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP saint scan"; flow:to_server,established; content:"pass -saint"; fast_pattern; reference:arachnids,330; classtype:suspicious-login; sid:2100358; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
-
 # 2100358
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP saint scan"; flow:to_server,established; content:"pass -saint"; fast_pattern; reference:arachnids,330; classtype:suspicious-login; sid:2100358; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
 ` 
@@ -4875,10 +4345,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP satan scan"; flow:to_server,established; content:"pass -satan"; fast_pattern; reference:arachnids,329; classtype:suspicious-login; sid:2100359; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
 
 # 2100359
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP satan scan"; flow:to_server,established; content:"pass -satan"; fast_pattern; reference:arachnids,329; classtype:suspicious-login; sid:2100359; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
@@ -4918,10 +4384,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP tar parameters"; flow:to_server,established; content:" --use-compress-program "; nocase; fast_pattern; reference:arachnids,134; reference:bugtraq,2240; reference:cve,1999-0202; reference:cve,1999-0997; classtype:bad-unknown; sid:2100362; rev:15; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
-
 # 2100362
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP tar parameters"; flow:to_server,established; content:" --use-compress-program "; nocase; fast_pattern; reference:arachnids,134; reference:bugtraq,2240; reference:cve,1999-0202; reference:cve,1999-0997; classtype:bad-unknown; sid:2100362; rev:15; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
 ` 
@@ -4959,10 +4421,6 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
-
-alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP invalid MDTM command attempt"; flow:to_server,established; content:"MDTM"; fast_pattern; nocase; pcre:"/^MDTM \d+[-+]\D/smi"; reference:bugtraq,9751; reference:cve,2001-1021; reference:cve,2004-0330; classtype:attempted-admin; sid:2102416; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
 
 # 2102416
 `alert ftp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL FTP invalid MDTM command attempt"; flow:to_server,established; content:"MDTM"; fast_pattern; nocase; pcre:"/^MDTM \d+[-+]\D/smi"; reference:bugtraq,9751; reference:cve,2001-1021; reference:cve,2004-0330; classtype:attempted-admin; sid:2102416; rev:8; metadata:created_at 2010_09_23, updated_at 2019_10_07;)
@@ -5002,10 +4460,6 @@ Type : SID
 
 Performance Impact : Not defined
 
-
-
-alert tcp $HOME_NET any -> $EXTERNAL_NET 21 (msg:"ET FTP Outbound Java Downloading jar over FTP"; flow:to_server,established; flowbits:isset,ET.Java.FTP.Logon; content:".jar"; nocase; fast_pattern; content:"RETR "; pcre:"/^[^\r\n]+\.jar/Ri"; classtype:misc-activity; sid:2016688; rev:3; metadata:created_at 2013_03_28, updated_at 2019_10_07;)
-
 # 2016688
 `alert tcp $HOME_NET any -> $EXTERNAL_NET 21 (msg:"ET FTP Outbound Java Downloading jar over FTP"; flow:to_server,established; flowbits:isset,ET.Java.FTP.Logon; content:".jar"; nocase; fast_pattern; content:"RETR "; pcre:"/^[^\r\n]+\.jar/Ri"; classtype:misc-activity; sid:2016688; rev:3; metadata:created_at 2013_03_28, updated_at 2019_10_07;)
 ` 
@@ -5043,6 +4497,4 @@ Malware Family : Not defined
 Type : SID
 
 Performance Impact : Not defined
-
-
 
