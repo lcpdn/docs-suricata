@@ -75,3 +75,4 @@ for line in Lines:
 		cursor.execute("""INSERT INTO documentation (sid,rule,file,name,attack_target,description,tag,affected_products,classtype,url_reference,cve_reference,creation_date,rev,signature_deployment,last_modified_date,category,severity,ruleset,malware_family,type) VALUES(%(sid)s, %(rule)s, %(file)s, %(name)s, %(attack_target)s, %(description)s, %(tag)s, %(affected_products)s, %(classtype)s, %(url_reference)s, %(cve_reference)s, %(creation_date)s, %(rev)s, %(signature_deployment)s, %(last_modified_date)s, %(category)s, %(severity)s, %(ruleset)s, %(malware_family)s, %(type)s)""", ruleobj)
 		conn.commit()
 		cursor.close()
+
